@@ -145,7 +145,7 @@ surface $X$.
     vector fields and 1-forms, identifying $T_\scrF$ and $N_\scrF^*$. In this
     way we get an isomorphism
     $K_X=\shHom(T_\scrF,N_\scrF^*)=T_\scrF^*\otimes N_\scrF^*$. This can also be
-    seen from the exact sequence \eqref{eqn:1-form sequence}, which restricts to
+    seen from the exact sequence \cref{eqn:1-form sequence}, which restricts to
     an exact sequence of vector bundles on $U=X\setminus\Sing(\scrF)$, giving
     $K_X|_U=(N_\scrF^*\otimes T_\scrF^*)|_U$ by taking determinants, which
     implies the result because $\Sing(\scrF)$ has codimension at least 2.
@@ -214,7 +214,7 @@ relevant differential equation will be analytic but not algebraic.
     \end{figure}
 \end{example}
 
-In fact, we have the following theorem (see \cite[Thm 2.20]{voisin_book}).
+In fact, we have the following theorem (cf. \cite[Thm 2.20]{voisin_book}).
 
 \begin{theorem}[Frobenius]\label{thm:frobenius}
     If $X$ is a smooth complex analytic variety, and $\scrF$ is a smooth
@@ -259,13 +259,14 @@ accumulated to provide some global information about $\scrF$. We will only
 consider the case where the underlying surface is smooth.
  
 Fix a foliation $\scrF$ on a smooth surface $X$, with a singular point
-$p\in\Sing(\scrF)$. Taking local analytic coordinates $x$, $y$ near $p$, we have
-a generator $A\pdv{}{x}+B\pdv{}{y}$ for $\scrF$.
+$p\in\Sing(\scrF)$. Taking local analytic coordinates $x,y$ near $p$, we have a
+generator $A\pdv{}{x}+B\pdv{}{y}$ for $\scrF$.
 
 \begin{definition}
     The \emph{multiplicity} of the singularity $p$ is
     \begin{equation*}
-        m(\scrF,p)\coloneqq\dim_\C\O_{X,p}/(A,B).
+        m(\scrF,p)\coloneqq\dim_\C\hat\O_{X,p}/(A,B).
+        % TODO: does this make sense?
     \end{equation*}
     We may then define a count of the total number of singularities of $\scrF$:
     \begin{equation*}
@@ -273,6 +274,12 @@ a generator $A\pdv{}{x}+B\pdv{}{y}$ for $\scrF$.
     \end{equation*}
     which is a finite sum provided that $X$ is compact.
 \end{definition}
+
+\begin{remark}
+    One could also view $m(\scrF,p)$ as the multiplicity at $p$ of the
+    0-dimensional subscheme $\Sing(\scrF)\subset X$ cut out by the ideal sheaf
+    in \cref{eqn:tangent sequence}.
+\end{remark}
 
 \begin{example}
     Insert example of multiplicities here.
