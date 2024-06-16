@@ -92,6 +92,7 @@ in codimension 2.
         \caption{Parallel leaves converging at the horizon.}
         \label{fig:parallel}
     \end{figure}
+    % TODO: mention blowing this up to get a smooth fibration of a Hirzebruch surface
 \end{example}
 
 The perspective of a foliation as the subsheaf $T_\scrF$ in $T_X$ leads us to a
@@ -226,10 +227,10 @@ relevant differential equation will be analytic but not algebraic.
 In fact, we have the following theorem (cf. \cite[Thm 2.20]{voisin_book}).
 
 \begin{theorem}[Frobenius]\label{thm:frobenius}
-    If $X$ is a smooth complex analytic variety, and $\scrF$ is a smooth
-    foliation on $X$, then for any $x\in X$ there is an analytic neighbourhood
-    $U$ of $x$ and a holomorphic submersion $F:U\to W\subset\C^r$ such that
-    $T_\scrF|_U=\ker(dF)$.
+    If $X$ is a smooth complex analytic variety, and $\scrF$ is a foliation on
+    $X$, then for any $x\in X\setminus\Sing(\scrF)$ there is an analytic
+    neighbourhood $U$ of $x$ and a holomorphic submersion $F:U\to W\subset\C^r$
+    such that $T_\scrF|_U=\ker(dF)$.
 \end{theorem}
 
 Hence near smooth points we always have locally defined analytic leaves, given
@@ -437,17 +438,19 @@ have a generator $A\pdv{}{x}+B\pdv{}{y}$ for $\scrF$.
     Indeed, there was one singularity with the local form
     $y\pdv{}{y}+z\pdv{}{z}$, which has multiplicity 1. In fact the integer
     $T_\scrF\cdot T_\scrF+T_\scrF\cdot K_X$ must always be even, from
-    computations with Stiefel--Whitney classes $w=\Sq(\nu)$ and the Wu formula
-    (see \cite{milnor_book}, \S8 and \S14):
+    computations with Stiefel--Whitney classes $w=\Sq(\nu)$ and their relation
+    to the Wu and Chern classes (see \cite{milnor_book}, \S8 and \S14):
     \begin{align*}
         L\cdot K_X
-            = c_1(X)c_1(L)
+            = -c_1(X)c_1(L)
             &\equiv w_2(X)w_2(L)
             & &\text{reducing mod 2} \\
             &\equiv (\nu_2(X)-w_1(X)^2)w_2(L)
-            & &\text{by the Wu formula} \\
-            &\equiv \nu_2(X)w_2(L) \\
-            &\equiv w_2(L)^2 - 0 \\
+            & &\text{from $w=\Sq(\nu)$} \\
+            &\equiv \nu_2(X)w_2(L)
+            & &\text{odd $w_k$ vanish} \\
+            &\equiv w_2(L)^2 
+            & &\text{from $\Sq^k(\alpha_k)=\alpha_k^2$} \\
             &\equiv c_1(L)^2 \mod2
     \end{align*}
     for any line bundle $L$. Hence a foliation of $\P^2$ must have an odd number
@@ -628,7 +631,7 @@ Tangency orders, vanishing orders, intersection numbers.
 
 \section{Rational fibrations}
 
-% TODO: look through voisin for more applications
+% TODO: look through floris for more applications
 
 \subsection{Rational surfaces}
 
@@ -656,6 +659,6 @@ also ample, with $K_\scrF\cdot(nF+H)=-2n+K_\scrF\cdot H<0$ for $n\gg0$.
     neighbourhood of $\Delta$ to define an analytic surface $S$ through
     $\Delta$. Then $N_{\Delta/S}\simeq T_\scrG|_\Delta\simeq T_\scrF|_C$, so
     $\deg N_{\Delta/S}=T_\scrF\cdot C=nT_\scrF\cdot H>0$. Hence $N_{\Delta/S}$
-    is ample. It follows that $S$ is algebraic (Voisin 1st lecture). Let
+    is ample. It follows that $S$ is algebraic (Floris 1st lecture). Let
     $\Sigma$ be the Zariski closure of $S$.
 \end{proof}
