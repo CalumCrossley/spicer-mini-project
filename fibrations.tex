@@ -1,4 +1,9 @@
 
+In this section we look at a few examples of foliations arising from fibrations,
+and results about this situation.
+
+% TODO: are there interesting properties of extending curves to foliations to put here?
+
 \subsection{Algebraic integrability}
 
 In this section we will look at the question of when the leaves of a foliation
@@ -13,12 +18,9 @@ construction.
     is a curve, the relative tangent bundle $T_{X/C}$ defines a foliation on $X$
     which we call a \emph{fibration}. The leaves of this fibration are precisely
     the fibers of $f$, which are algebraic curves.
-    % TODO: fix this (defn of fibration, edge case leaves)
 \end{definition}
 
-% TODO: K_F=O(-1) implies pencil of lines in tangency orders section
-We saw a particular example of some converse to this result in blah. There is a
-general statement which can be made:
+In the converse direction, there is a general statement which can be made:
 
 \begin{proposition}
     Suppose $(X,\scrF)$ is a foliated surface, such that for a general $x\in X$
@@ -30,14 +32,14 @@ general statement which can be made:
 \begin{proof}[Sketch proof]
     We consider the Hilbert scheme $\Hilb_X$. Tangency to the foliation $\scrF$
     is a condition on subvarieties which cuts out a closed subscheme
-    $\calT_X\subseteq\Hilb_X$. By assumption, the canonical map from the
-    universal family $\calU$ over $\calT_X$ to $X$ is dominant. Since $\calU$ is
-    an infinite disjoint union of projective components, by the Baire category
-    theorem we have some such component $Z\subset\calU$ over $Y\subset\calT_X$
-    which maps surjectively to $X$. After restricting to a suitable hyperplane
-    $Y^0$ in $Y$, we get a finite surjection $Z^0\to X$, which lifts to a Galois
-    covering $\tilde Z^0\to X$, where the Galois group $G$ can be made to act on
-    a base $\tilde Y^0$.
+    $\calT_{X,\scrF}\subseteq\Hilb_X$. By assumption, the canonical map from the
+    universal family $\calU$ over $\calT_{X,\scrF}$ to $X$ is dominant. Since
+    $\calU$ is an infinite disjoint union of projective components, by the Baire
+    category theorem we have some such component $Z\subset\calU$ over
+    $Y\subset\calT_{X,\scrF}$ which maps surjectively to $X$. After restricting
+    to a suitable hyperplane $Y^0$ in $Y$, we get a finite surjection
+    $Z^0\to X$, which lifts to a Galois covering $\tilde Z^0\to X$, where the
+    Galois group $G$ can be made to act on a base $\tilde Y^0$.
     \begin{equation*}
         \begin{tikzcd}
             \tilde Z^0 \ar[d] \ar[r]
@@ -53,19 +55,19 @@ general statement which can be made:
     $\scrF$.
 \end{proof}
 
-% "if K_F is negative there are rational curves involved"
+% TODO expand on Galois coverings, expand on hyperplane section argument
 
 \subsection{Miyaoka's criterion}
 
-% TODO
+% TODO: K_F=O(-1) implies pencil of lines in tangency orders section
+% "negativity of K_F relates to rational invariant curves"?
+% condition = K_F pseff?
 
 Consider a fibration $f:X\to C$ where the general fiber of $f$ is rational. For
 example $X=\P^1\times\P^1$ with the projection to the first coordinate.
 $K_\scrF=K_{X/C}-\{\text{effective supported on fibers}\}$,
 $K_\scrF\cdot F=K_X\cdot F=-2$ for fiber $F$, $F$ nef, so for $H$ ample $nF+H$
 also ample, with $K_\scrF\cdot(nF+H)=-2n+K_\scrF\cdot H<0$ for $n\gg0$.
-
-% condition = K_F pseff?
 
 \begin{theorem}[Miyaoka]
     Suppose $(X,\scrF)$ is a foliated surface, and $H$ is an ample divisor on

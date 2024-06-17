@@ -1,4 +1,6 @@
 
+% TODO: in this section we blah
+
 \subsection{The Green-Griffiths conjecture}
 
 % TODO: intro / context
@@ -8,12 +10,13 @@
     Zariski dense holomorphic curves.
 \end{conjecture}
 
+% TODO: clean this up
 Blah ideas due to Bogomolov, McQuillan. We consider a holomorphic map
 $f:\C\to X$, which induces also a map $df:\C\to\P(T_X)$. Writing $\O(-1)$ for
 the relative tautological bundle on $\P(T_X)$, we have (tautologically)
 $(df)^*\O(-1)=T_C$. Now suppose $\O(1)$ is big. In fact this is equivalent to
 the vector bundle $T_X$ being ample in a suitable sense which we will look at
-later. % TODO: T_X vs Omega^1_X stuff % TODO: bigness? (just say ample?)
+later. % TODO: T_X vs Omega^1_X stuff
 This assumption is intended as an approximation of the condition of being
 general type. We may find an effective divisor $D\ge0$ in $\P(T_X)$ representing
 $\O(1)$, which is locally a section of the bundle over $X$, although possibly
@@ -30,8 +33,65 @@ of such a foliation is a strong constraint, and this argument is part of work
 due to Bogomolov and McQuillan \cite{mcquillan_98} which lead to certain
 restricted results related to the conjecture.
 
-% TODO: hypersurface example motivation for ampleness and stability section
+It turns out that the condition of $\O_{\P(T_X)}(1)$ being big as a property of
+the vector bundle $T_X$ is equivalent to a notion of ampleness for $T_X$, as
+defined in \cite{hartshorne_66}. % TODO: details / sketch
 
 \subsection{Ampleness and slope stability}
 
-% TODO: definitions, tensors and sums, K-E
+% TODO: figure out T_X vs Omega^1_X
+
+Motivated by the previous arguments, suppose we want an example of a surface $X$
+such that $\O_{\P(T_X)}(1)$ is big, or equivalently $T_X$ is ample. For a
+somewhat flexible class of general type surfaces, we will look among high degree
+hypersurfaces in $\P^3$. Consider $X$ cut out by a section of $\O_{\P^3}(d)$. We
+have the normal bundle exact sequence
+\begin{equation*}
+    0 \to N_{X/\P^3}^\vee \to \Omega^1_{\P^3}|_X \to \Omega^1_X \to 0,
+\end{equation*}
+where $N_{X/\P^3}=\O(-d)$ by adjunction. Taking determinants, we see that
+$\O(-4)=K_{\P^3}=K_X\otimes\O(-d)$, so at least $\det\Omega^1_X=K_X$ is ample
+for $d\gg0$. It is not true that a vector bundle is ample whenever its
+determinant bundle is ample, although the converse does hold. % TODO: example, proof
+But in this particular case it is actually sufficient, due to the following
+result.
+
+% TODO: prove this somewhere
+\begin{proposition}
+    If $\calE$ is a vector bundle such that $\det\calE$ is ample, and $\calE$ is
+    semi-stable, then $\calE$ is ample.
+\end{proposition}
+
+% TODO: mention Omega^1_X being semi-stable because of Kahler-Einstein metrics
+% easier proof?
+
+% TODO: construct example, find the foliation?
+
+Recall the notion of slope stability:
+
+\begin{definition}
+    We define the \emph{slope} of a coherent sheaf $\calE$ to be
+    $\mu(\calE)\coloneqq\deg\calE/\rank\calE$. The sheaf is (slope)
+    \emph{stable} if for all subsheaves $0\to\calF\to\calE$ we have
+    $\mu(\calF)\le\calE$, and (slope) \emph{semi-stable} if the same holds but
+    with a non-strict inequality. % TODO: check this
+\end{definition}
+
+This definition is motivated by the application of geometric invariant theory in
+the construction of moduli spaces of sheaves. A key theorem in the stability
+theory of sheaves is the following:
+
+% TODO: K-E definition, reference, context
+\begin{theorem}[Yau]
+    A vector bundle $\calE$ is stable iff it admits a K\"ahler--Einstein metric.
+\end{theorem}
+
+\begin{proposition}
+    If $\calE,\calE'$ are stable vector bundles, then so is $\calE\otimes\calE'$.
+\end{proposition}
+
+\begin{proposition}
+    If $\calE,\calE'$ are stable vector bundles, then so is $\calE\oplus\calE'$.
+\end{proposition}
+
+% TODO: prove one directly, the other is done via Kahler-Einstein metrics
