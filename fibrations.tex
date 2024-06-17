@@ -1,10 +1,59 @@
 
 \subsection{Algebraic integrability}
 
-% TODO: K_F=O(-1) implies pencil of lines in tangency orders section
-% "if K_F is negative there are rational curves involved"
+In this section we will look at the question of when the leaves of a foliation
+are algebraic curves. Examples we have seen are $xdy-ydx$, with leaves $ax+by=0$
+for $[a:b]\in\P^1$, and $pxdy+qydx$ for $p,q\in\N$, with leaves $x^qy^p=c$ for
+$c\in\A^1$. Notice that $xdy-ydx=y\cdot d(x/y)$, and
+$pxdy+qydx=d(x^qy^p)/(x^{q-1}y^{p-1})$, so these are examples of the following
+construction.
 
-% TODO
+\begin{definition}
+    Given a rational map $f:X\dashrightarrow C$, where $X$ is a surface and $C$
+    is a curve, the relative tangent bundle $T_{X/C}$ defines a foliation on $X$
+    which we call a \emph{fibration}. The leaves of this fibration are precisely
+    the fibers of $f$, which are algebraic curves.
+    % TODO: fix this (defn of fibration, edge case leaves)
+\end{definition}
+
+% TODO: K_F=O(-1) implies pencil of lines in tangency orders section
+We saw a particular example of some converse to this result in blah. There is a
+general statement which can be made:
+
+\begin{proposition}
+    Suppose $(X,\scrF)$ is a foliated surface, such that for a general $x\in X$
+    the leaf of $\scrF$ through $x$ is algebraic. Then there exists a rational
+    map $X\dashrightarrow Y$ such that $T_{X/Y}$ and $T_\scrF$ are isomorphic on
+    a dense open subset of $X$.
+\end{proposition}
+
+\begin{proof}[Sketch proof]
+    We consider the Hilbert scheme $\Hilb_X$. Tangency to the foliation $\scrF$
+    is a condition on subvarieties which cuts out a closed subscheme
+    $\calT_X\subseteq\Hilb_X$. By assumption, the canonical map from the
+    universal family $\calU$ over $\calT_X$ to $X$ is dominant. Since $\calU$ is
+    an infinite disjoint union of projective components, by the Baire category
+    theorem we have some such component $Z\subset\calU$ over $Y\subset\calT_X$
+    which maps surjectively to $X$. After restricting to a suitable hyperplane
+    $Y^0$ in $Y$, we get a finite surjection $Z^0\to X$, which lifts to a Galois
+    covering $\tilde Z^0\to X$, where the Galois group $G$ can be made to act on
+    a base $\tilde Y^0$.
+    \begin{equation*}
+        \begin{tikzcd}
+            \tilde Z^0 \ar[d] \ar[r]
+                \ar[rrr,bend left,"\text{Galois}"] &
+            Z^0 \ar[d] \ar[r,hook] &
+            \calU \ar[d] \ar[r] & X \\
+            \tilde Y^0 \ar[r] & Y^0 \ar[r,hook] & \calT_X
+        \end{tikzcd}
+    \end{equation*}
+    At this point we can collapse the fibers by taking the quotient
+    $\tilde Z^0/G$, which maps birationally to $X$, and so we get a rational map
+    $X\dashrightarrow \tilde Y^0/G$ which by construction has fibers tangent to
+    $\scrF$.
+\end{proof}
+
+% "if K_F is negative there are rational curves involved"
 
 \subsection{Miyaoka's criterion}
 
@@ -16,11 +65,13 @@ $K_\scrF=K_{X/C}-\{\text{effective supported on fibers}\}$,
 $K_\scrF\cdot F=K_X\cdot F=-2$ for fiber $F$, $F$ nef, so for $H$ ample $nF+H$
 also ample, with $K_\scrF\cdot(nF+H)=-2n+K_\scrF\cdot H<0$ for $n\gg0$.
 
+% condition = K_F pseff?
+
 \begin{theorem}[Miyaoka]
     Suppose $(X,\scrF)$ is a foliated surface, and $H$ is an ample divisor on
     $X$ such that $K_\scrF\cdot H<0$. Then there is a birational morphism
     $\tilde X\to X$ and a fibration $f:\tilde X\to C$ such that the general
-    fiber of $f$ is rational, and $\scrF$ is the tame fibration induced by $f$.
+    fiber of $f$ is rational, and $\scrF$ is the foliation induced by $f$.
 \end{theorem}
 
 \begin{proof}[Proof (Bogomolov, McQuillan)]
@@ -33,5 +84,5 @@ also ample, with $K_\scrF\cdot(nF+H)=-2n+K_\scrF\cdot H<0$ for $n\gg0$.
     $\Delta$. Then $N_{\Delta/S}\simeq T_\scrG|_\Delta\simeq T_\scrF|_C$, so
     $\deg N_{\Delta/S}=T_\scrF\cdot C=nT_\scrF\cdot H>0$. Hence $N_{\Delta/S}$
     is ample. It follows that $S$ is algebraic (Floris 1st lecture). Let
-    $\Sigma$ be the Zariski closure of $S$.
+    $\Sigma$ be the Zariski closure of $S$. % TODO: complete this (from Floris)
 \end{proof}
