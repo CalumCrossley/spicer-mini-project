@@ -1,0 +1,37 @@
+
+\subsection{Algebraic integrability}
+
+% TODO: K_F=O(-1) implies pencil of lines in tangency orders section
+% "if K_F is negative there are rational curves involved"
+
+% TODO
+
+\subsection{Miyaoka's criterion}
+
+% TODO
+
+Consider a fibration $f:X\to C$ where the general fiber of $f$ is rational. For
+example $X=\P^1\times\P^1$ with the projection to the first coordinate.
+$K_\scrF=K_{X/C}-\{\text{effective supported on fibers}\}$,
+$K_\scrF\cdot F=K_X\cdot F=-2$ for fiber $F$, $F$ nef, so for $H$ ample $nF+H$
+also ample, with $K_\scrF\cdot(nF+H)=-2n+K_\scrF\cdot H<0$ for $n\gg0$.
+
+\begin{theorem}[Miyaoka]
+    Suppose $(X,\scrF)$ is a foliated surface, and $H$ is an ample divisor on
+    $X$ such that $K_\scrF\cdot H<0$. Then there is a birational morphism
+    $\tilde X\to X$ and a fibration $f:\tilde X\to C$ such that the general
+    fiber of $f$ is rational, and $\scrF$ is the tame fibration induced by $f$.
+\end{theorem}
+
+\begin{proof}[Proof (Bogomolov, McQuillan)]
+    Bertini theorem $\implies$ find $C\in|nH|$ smooth disjoint from
+    $\Sing(\scrF)$. Let $Y=X\times C$. Consider the rank 1 foliation $\scrG$ on
+    $Y$ given by $\scrG|_{X\times\{c\}}=\scrF$. Consider the diagonal
+    $\Delta\subset C\times C\subset X\times C=Y$, which is disjoint from
+    $\Sing(\scrG)$. Take the integral curves of $\scrG$ through $\Delta$ in a
+    neighbourhood of $\Delta$ to define an analytic surface $S$ through
+    $\Delta$. Then $N_{\Delta/S}\simeq T_\scrG|_\Delta\simeq T_\scrF|_C$, so
+    $\deg N_{\Delta/S}=T_\scrF\cdot C=nT_\scrF\cdot H>0$. Hence $N_{\Delta/S}$
+    is ample. It follows that $S$ is algebraic (Floris 1st lecture). Let
+    $\Sigma$ be the Zariski closure of $S$.
+\end{proof}
