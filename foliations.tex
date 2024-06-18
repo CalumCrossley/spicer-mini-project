@@ -588,13 +588,34 @@ singularities is that we can ``reduce'' to them after some sequence of blowups;
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}
-            % TODO: picture
-            \draw (-1,0)
-                -- (0,0) node[circle,fill,inner sep=1pt] {}
-                -- (1,0);
+            \draw[color=gray,dashed] (0,0.9) -- (0,3.1)
+                node[anchor=south] {$E$};
+
+            \draw (1,1) -- (-1,1);
+            \draw (0.924,1.441) -- (-0.924,1.059);
+            \draw (0.707,1.854) -- (-0.707,1.146);
+            \draw (0,1.75) -- (-0.383,1.288);
+            \draw (0,2.25) -- (-0,1.5);
+            \draw (-0.345,2.666) -- (0.383,1.788);
+            \draw (-0.707,2.854) -- (0.707,2.146);
+            \draw (-0.924,2.941) -- (0.924,2.559);
+            \draw (-1,3) -- (1,3);
+
+            \draw[domain=-0.1:2.4, dashed, smooth, variable=\t]
+                plot ({cos(\t*22.5)}, {1+0.25*\t+0.5*sin(\t*22.5)});
+            \draw[domain=6:8, dashed, smooth, variable=\t]
+                plot ({cos(\t*22.5)}, {1+0.25*\t+0.5*sin(\t*22.5)});
+            \draw[domain=-0.5:8.1, dashed, smooth, variable=\t]
+                plot ({-cos(\t*22.5)}, {1+0.25*\t-0.5*sin(\t*22.5)});
+
+            \draw[->] (0,0.6) -- (0,0.3);
+
+            \draw (-1,-0.5)
+                -- (0,-0.5) node[circle,fill,inner sep=1pt] {}
+                -- (1,-0.5);
             \foreach \t in {1,...,7}
-                \draw ({cos(\t*22.5)},{sin(\t*22.5)})
-                    -- ({-cos(\t*22.5)},{-sin(\t*22.5)});
+                \draw ({cos(\t*22.5)},{0.5*sin(\t*22.5)-0.5})
+                    -- ({-cos(\t*22.5)},{-0.5*sin(\t*22.5)-0.5});
         \end{tikzpicture}
         \caption{Blowing up $xdy-ydx$.}
     \end{figure}
@@ -613,8 +634,32 @@ singularities is that we can ``reduce'' to them after some sequence of blowups;
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}
-            \draw (0,-2) -- (0,2);
-            % TODO: picture
+            \draw[color=blue] (-2,-0.5) -- (0,-0.5);
+            \draw[color=red] (-2,0.5) -- (0,0.5);
+            \draw (-1,-1) -- (-1,1) node[anchor=south] {$E$};
+            \node[circle,fill,inner sep=1pt] at (-1,0.5) {};
+            \node[circle,fill,inner sep=1pt] at (-1,-0.5) {};
+            \foreach \s in {-1,1}
+                \draw[domain=0.04:0.96, color=gray, smooth, variable=\t]
+                    plot ({-1+\s*0.2/sqrt(\t*(1-\t))},{\t-0.5});
+            \foreach \s in {-1,1}
+                \draw[domain=1.09:1.5, color=gray, smooth, variable=\t]
+                    plot ({-1+\s*sqrt(0.1/(\t*(\t-1)))},{\t-0.5});
+            \foreach \s in {-1,1}
+                \draw[domain=-0.5:-0.09, color=gray, smooth, variable=\t]
+                    plot ({-1+\s*sqrt(0.1/(\t*(\t-1)))},{\t-0.5});
+
+            \draw[->] (0.3,0) -- (0.7,0);
+
+            \draw[color=blue] (2,-1) -- (2,1);
+            \draw[color=red] (1,0) -- (3,0);
+            \node[circle,fill,inner sep=1pt] at (2,0) {};
+            \foreach \s in {-0.25,0.25}
+                \draw[domain=-1:-0.25, color=gray, smooth, variable=\t]
+                    plot ({2+\t}, {\s/\t});
+            \foreach \s in {-0.25,0.25}
+                \draw[domain=0.25:1, color=gray, smooth, variable=\t]
+                    plot ({2+\t}, {\s/\t});
         \end{tikzpicture}
         \caption{Blowing up $xdy+ydx$.}
     \end{figure}
@@ -628,6 +673,28 @@ singularities is that we can ``reduce'' to them after some sequence of blowups;
     so we have introduced a singularity on the exceptional divisor, which
     crosses the strict transform of the unique separatrix downstairs. Note that
     the pullback doesn't vanish along $E$.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \draw[color=red] (-2,-1) -- (-2,1) node[anchor=south] {$E$};
+            \draw (-3,0) -- (-1,0);
+            \node[circle,fill,inner sep=1pt] at (-2,0) {};
+            \foreach \s in {-0.25,0.25}
+                \draw[domain=-1:-0.25, color=gray, smooth, variable=\t]
+                    plot ({-2+\t}, {\s/\t});
+            \foreach \s in {-0.25,0.25}
+                \draw[domain=0.25:1, color=gray, smooth, variable=\t]
+                    plot ({-2+\t}, {\s/\t});
+
+            \draw[->] (0,0) -- (0.5,0);
+
+            \node[cross out,draw=black,inner sep=1pt] at (2,0) {};
+            \draw (1,0) -- (3,0);
+            \foreach \y in {-0.4,-0.2,0.2,0.4}
+                \draw[color=gray] (1,{\y}) -- (3,{\y});
+        \end{tikzpicture}
+        \caption{Blowing up a smooth foliation.}
+    \end{figure}
 \end{example}
 
 \begin{definition}
