@@ -1,8 +1,112 @@
 
+It is clear that a foliation interacts with curves on the surface, and in fact
+the intersection theory of the line bundles associated to the foliation can be
+computed in terms of local invariants. In this section we introduce two of these
+local invariants, and look at an example constraining a foliation using
+$K_\scrF$.
+
 \subsection{Tangency}
 
-% TODO (Floris)
+For a curve which is not $\scrF$-invariant, the local leaves of $\scrF$
+intersect it non-degenerately, and we can ask about the multiplicity of these
+intersections.
+
+\begin{definition}
+    Suppose $C$ is a curve, and $p\in C$. We define the \emph{tangency order} of
+    $\scrF$ to $C$ at $p$ as
+    \begin{equation*}
+        \tang(\scrF,C,p) = \dim_\C\O_{X,p}/(v(f),f),
+    \end{equation*}
+    where $f$ is a local equation defining $C$ and $v$ is the vector field
+    generating $\scrF$, viewed as a derivation. We may then define the total
+    tangency order of $\scrF$ along $C$:
+    \begin{equation*}
+        \tang(\scrF,C) = \sum_{p\in C}\tang(\scrF,C,p).
+    \end{equation*}
+\end{definition}
+
+\begin{remark}
+    The component of $C$ through $p$ is $\scrF$-invariant iff $v(f)$ vanishes
+    along it, i.e. is a multiple of $f$, and so $\tang(\scrF,C,p)<\infty$ iff
+    this is not the case. If $p\notin\Sing(\scrF)\cup\Sing(C)$ then
+    $\tang(\scrF,C,p)=0$ if $\scrF$ and $C$ are transverse at $p$, so the sum
+    defining $\tang(\scrF,C)$ is a finite sum provided $C$ has no
+    $\scrF$-invariant components.
+\end{remark}
+
+\begin{proposition}\label{prop:tangency}
+    Suppose $C$ has no $\scrF$-invariant components. Then
+    \begin{equation*}
+        T_\scrF\cdot C = \tang(\scrF,C) - C\cdot C.
+    \end{equation*}
+\end{proposition}
+
+\begin{proof}
+    $v(f)$ defines a holomorphic section of $K_\scrF\otimes\O(C)|_C$.
+    % TODO
+\end{proof}
+
+% example
 
 \subsection{Vanishing order}
 
-% is this necessary?
+For a curve which is $\scrF$-invariant, the 1-form defining $\scrF$ vanishes
+along the curve, and we can ask about the order of this vanishing.
+
+\begin{definition}
+    Suppose $C$ is an $\scrF$-invariant curve, and $p\in C$. We define the
+    \emph{vanishing order} of $\scrF$ along $C$ at $p$ as
+    \begin{equation*}
+        Z(\scrF,C,p) = \ord_p\biggl(\frac{h}{g}\biggr)\bigg|_C,
+    \end{equation*}
+    where blah. We may then define the total vanishing order of $\scrF$ along
+    $C$:
+    \begin{equation*}
+        Z(\scrF,C) = \sum_{p\in C}Z(\scrF,C,p).
+    \end{equation*}
+\end{definition}
+
+% smooth implies zero, so finite sum
+
+% negative example!
+
+% other example
+
+\begin{proposition}
+    Suppose $C$ is an $\scrF$-invariant curve. Then
+    \begin{equation*}
+        N_\scrF\cdot C = Z(\scrF,C) + C\cdot C.
+    \end{equation*}
+\end{proposition}
+
+\begin{proof}
+    $(h/g)|_C$ defines a meromorphic section of $N_\scrF\otimes\O(-C)|_C$.
+    % TODO
+\end{proof}
+
+% where does this go?
+% K_X.C+C^2 = -chi(C) euler characteristic of smoothing
+
+\subsection{A rational example}\label{sec:pencil}
+
+Suppose $\scrF$ is a foliation of $\P^2$, and suppose the tangency order
+$\tang(\scrF,\ell)$ is $d$ for a general line $\ell$. Then \cref{prop:tangency}
+gives
+\begin{equation*}
+    K_\scrF\cdot\ell = d - \ell\cdot\ell = d - 1, \tag{$*$}
+\end{equation*}
+so $K_\scrF=\O(d-1)$. There is a natural tricohotomy between the case $d=0$,
+where $K_\scrF$ is negative, the case $d=1$, where $K_\scrF$ is trivial, and the
+general case $d\ge2$. We will consider the case $d=0$.
+
+Specifically, we are assuming that the general line $\ell$ is transverse to
+$\scrF$. In fact, by the formula ($*$) applying \cref{prop:tangency} again we
+have $\tang(\scrF,\ell)=0$ for \emph{any} non-$\scrF$-invariant line $\ell$, so
+all non-$\scrF$-invariant lines are transverse to $\scrF$. Now at any point in
+$\P^2$ which is not a singularity of $\scrF$, there is a line through the point
+sharing the tangent direction of $\scrF$, which is by construction not
+transverse to $\scrF$. This line must be $\scrF$-invariant, and so we see that
+$\scrF$ is a pencil of lines in $\P^2$.
+
+So we have shown, a foliation of $\P^2$ with $K_\scrF$ negative must be a pencil
+of lines (like \cref{ex:parallel}).

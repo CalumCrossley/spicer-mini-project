@@ -3,9 +3,9 @@ In this section we look at a few examples of foliations arising from fibrations.
 
 \subsection{Algebraic integrability}
 
-In this section we will look at the question of when the leaves of a foliation
-are algebraic curves. Examples we have seen are $xdy-ydx$, with leaves $ax+by=0$
-for $[a:b]\in\P^1$, and $pxdy+qydx$ for $p,q\in\N$, with leaves $x^qy^p=c$ for
+It is a natural question to ask when the leaves of a foliation are algebraic
+curves. Examples we have seen are $xdy-ydx$, with leaves $ax+by=0$ for
+$[a:b]\in\P^1$, and $pxdy+qydx$ for $p,q\in\N$, with leaves $x^qy^p=c$ for
 $c\in\A^1$. Notice that $xdy-ydx=y\cdot d(x/y)$, and
 $pxdy+qydx=d(x^qy^p)/(x^{q-1}y^{p-1})$, so these are examples of the following
 construction.
@@ -16,6 +16,8 @@ construction.
     which we call a \emph{fibration}. The leaves of this fibration are precisely
     the fibers of $f$, which are algebraic curves.
 \end{definition}
+
+% TODO: compute N_F = K_C + Σ(m-1)D where fibers of f are ΣmD
 
 In the converse direction, there is a general statement which can be made:
 
@@ -56,22 +58,27 @@ In the converse direction, there is a general statement which can be made:
 
 \subsection{Miyaoka's criterion}
 
-% TODO: K_F=O(-1) implies pencil of lines in tangency orders section
-% "negativity of K_F relates to rational invariant curves"?
+We saw in \cref{sec:pencil} an example where $K_\scrF$ being negative forces the
+foliation $\scrF$ to consist of rational curves. We present a theorem due to
+Miyaoka which asserts a more general result of this form.
+
 % condition = K_F pseff?
-
-Consider a fibration $f:X\to C$ where the general fiber of $f$ is rational. For
-example $X=\P^1\times\P^1$ with the projection to the first coordinate.
-$K_\scrF=K_{X/C}-\{\text{effective supported on fibers}\}$,
-$K_\scrF\cdot F=K_X\cdot F=-2$ for fiber $F$, $F$ nef, so for $H$ ample $nF+H$
-also ample, with $K_\scrF\cdot(nF+H)=-2n+K_\scrF\cdot H<0$ for $n\gg0$.
-
 \begin{theorem}[Miyaoka]
     Suppose $(X,\scrF)$ is a foliated surface, and $H$ is an ample divisor on
     $X$ such that $K_\scrF\cdot H<0$. Then there is a birational morphism
     $\tilde X\to X$ and a fibration $f:\tilde X\to C$ such that the general
     fiber of $f$ is rational, and $\scrF$ is the foliation induced by $f$.
 \end{theorem}
+
+\begin{remark}
+    % TODO: cleanup
+    % necessary
+    Consider a fibration $f:X\to C$ where the general fiber of $f$ is rational. For
+    example $X=\P^1\times\P^1$ with the projection to the first coordinate.
+    $K_\scrF=K_{X/C}-\{\text{effective supported on fibers}\}$,
+    $K_\scrF\cdot F=K_X\cdot F=-2$ for fiber $F$, $F$ nef, so for $H$ ample $nF+H$
+    also ample, with $K_\scrF\cdot(nF+H)=-2n+K_\scrF\cdot H<0$ for $n\gg0$.
+\end{remark}
 
 \begin{proof}[Proof (Bogomolov, McQuillan)]
     Bertini theorem $\implies$ find $C\in|nH|$ smooth disjoint from

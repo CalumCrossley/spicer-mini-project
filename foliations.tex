@@ -178,7 +178,7 @@ relevant differential equation will be analytic but not algebraic.
 
 \begin{definition}
     If $(X,\scrF)$ is a foliated surface, a holomorphic curve $C$ in $X$ is
-    \emph{invariant} under $\scrF$ if the inclusion $T_C\to T_X$ factors through
+    \emph{invariant} under $\scrF$ if the map $T_C\to T_X$ factors through
     $T_\scrF$.
 \end{definition}
 
@@ -247,6 +247,12 @@ see \cite{camacho_88}.
     In \cref{ex:irrational} we found two separatrices: $\{x=0\}$ and
     $\{y=0\}$.
 \end{example}
+
+\begin{remark}
+    As a consequence of \cref{thm:frobenius}, if two invariant curves intersect
+    (or if an invariant curve has a node), then the intersection point is a
+    singularity of the foliation. % TODO: nodal example would be cool
+\end{remark}
 
 It is worth noting that while the leaves of the foliation can always be locally
 defined by an analytic equation, the global geometry can be quite pathalogical.
@@ -447,8 +453,18 @@ have a generator $A\pdv{}{x}+B\pdv{}{y}$ for $\scrF$.
             &\equiv c_1(L)^2 \mod2
     \end{align*}
     for any line bundle $L$. Hence a foliation of $\P^2$ must have an odd number
-    of singularities (in particular, at least one).
+    of singularities, and in particular at least one. This can be seen in
+    analogy with the Poincar\'e--Hopf theorem, where the multiplicity of a
+    singularity of $\scrF$ corresponds to the index of the zero of the
+    generating vector field.
 \end{example}
+
+\begin{remark}
+    It can be shown directly that there is no exact sequence of the form
+    $0\to\O(a)\to\Omega^1_{\P^2}\to\O(b)\to0$ on $\P^2$, so that there can be no
+    smooth foliation, but this doesn't obviously generalize to a parity
+    constraint.
+\end{remark}
 
 \subsubsection{Holonomy}
 
@@ -564,8 +580,9 @@ property of this classification is that the separatrices at a reduced
 singularity form a local complete intersection, with at most 2 components.
 Compare this with the non-reduced radial foliation of \cref{ex:parallel}, which
 has infinitely many separatrices. The significance of this class of
-singularities is that we can ``reduce'' to them after some sequence of blowups;
-\cref{thm:seidenberg}.
+singularities is that we can ``reduce'' to them after some sequence of blowups,
+\cref{thm:seidenberg}, and moreover the blowup of a reduced singularity remains
+reduced.
 
 \subsection{Blowups}
 
@@ -583,7 +600,7 @@ singularities is that we can ``reduce'' to them after some sequence of blowups;
     These vanish to second order along the exceptional divisor $E$, but
     factoring this out we get 1-forms $dt$ and $-ds$ on $U$ and $V$ which patch
     together to give a nowhere vanishing 1-form with values in the line bundle
-    $\O(2E)$. (Note that $dt=-ds/s^2$, $-ds=dt/t^2$.) Pictorially this is
+    $\O(-2E)$. (Note that $dt=-ds/s^2$, $-ds=dt/t^2$.) Pictorially this is
     exactly as expected.
     \begin{figure}[H]
         \centering
@@ -628,7 +645,7 @@ singularities is that we can ``reduce'' to them after some sequence of blowups;
         \omega|_V = y^2ds+2ysdy.
     \end{equation*}
     This has only first order vanishing along $E$, giving a 1-form valued in
-    $\O(E)$, but with two singularities from the local forms $xdt+2tdx$,
+    $\O(-E)$, but with two singularities from the local forms $xdt+2tdx$,
     $yds+2sdy$. The exceptional divisor takes the role of the other separatrix
     downstairs in lifting the singularity.
     \begin{figure}[H]
@@ -701,11 +718,11 @@ singularities is that we can ``reduce'' to them after some sequence of blowups;
     Summarizing what we have seen in these examples, if $(X,\scrF)$ is a
     foliated surface and $p\in X$, then under the blowup
     $\pi:\tilde X=\Bl_pX\to X$ we have a rational section of
-    $\pi^*N_\scrF\otimes\Omega^1_{\tilde X}$ with a pole of some order $a\ge0$
+    $\pi^*N_\scrF\otimes\Omega^1_{\tilde X}$ with a zero of some order $a\ge0$
     along the exceptional divisor $E$. This then gives a regular section of
-    $\pi^*N_\scrF(aE)\otimes\Omega^1_{\tilde X}$, defining a foliation
-    $\tilde\scrF$ on $\tilde X$ with $N_{\tilde\scrF}=\pi^*N_\scrF(aE)$. We will
-    refer to the vanishing order $a$ as $a(\scrF,p)$.
+    $\pi^*N_\scrF(-aE)\otimes\Omega^1_{\tilde X}$, defining a foliation
+    $\tilde\scrF$ on $\tilde X$ with $N_{\tilde\scrF}=\pi^*N_\scrF(-aE)$. We
+    will refer to the vanishing order $a$ as $a(\scrF,p)$.
 \end{definition}
 
 \begin{remark}
@@ -715,27 +732,28 @@ singularities is that we can ``reduce'' to them after some sequence of blowups;
     how the normal bundle changes.
 \end{remark}
 
-\begin{remark}
-    In \cref{ex:smooth blowup}, we computed $a(\scrF,p)=0$ for
-    $p\notin\Sing(\scrF)$.
-\end{remark}
+In \cref{ex:smooth blowup} we computed $a(\scrF,p)=0$ for
+$p\notin\Sing(\scrF)$, and in the other examples we found $a(\scrF,p)=1$ for the
+reduced singularity $xdy+ydx$ and $a(\scrF,p)=2$ for the non-reduced radial
+singularity. It is a fact that for reduced singularities $a(\scrF,p)\in\{0,1\}$,
+which can be shown from the normal forms. Recall that $K_{\tilde X}=K_X+E$, so
+\begin{equation*}
+    K_{\tilde\scrF}
+        = K_{\tilde X}+N_{\tilde\scrF}
+        = \pi^*K_\scrF+(1-a)E.
+\end{equation*}
+Hence for reduced singularities we get $K_{\tilde\scrF}\ge\pi^*K_\scrF$.
+% TODO: singularity with a=0 example
 
-Suppose $p\in\Sing(\scrF)$, and $\tilde\scrF$ is the induced foliation on
-$\tilde X=\Bl_pX$. For each separatrix $C$ through $p$, the strict transform
-$\tilde C\subset\tilde X$ is an invariant curve of $\tilde\scrF$ that meets the
-exceptional divisor $E$ at a point $q$, which may or may not be a singularity of
-$\tilde\scrF$.
+We now make a remark about the holonomy of the foliation $\tilde\scrF$. For each
+separatrix $C$ through $p$, the strict transform $\tilde C\subset\tilde X$ is an
+invariant curve of $\tilde\scrF$ that meets the exceptional divisor $E$ at a
+point $q$, which may or may not be a singularity of $\tilde\scrF$.
 
 \begin{proposition}\label{prop:blowup holonomy}
     The derivative of the holonomy of $\tilde\scrF$ along $\tilde C$ through $q$
     is the same as that of $\scrF$ along $C$ through $p$.
 \end{proposition}
-
-\begin{example}
-    In \cref{ex:radial holonomy} we saw that the radial fibration has trivial
-    holonomy, which can be seen in light of this proposition from the fact that
-    blowing it up gives a smooth foliation (\cref{ex:blowup radial}).
-\end{example}
 
 \begin{proof}
     Indeed, the loop $\gamma$, curve $D$, and portions of leaves along which
@@ -743,7 +761,13 @@ $\tilde\scrF$.
     $p$, and so lift isomorphically to the same constructions in $\tilde X$.
 \end{proof}
 
-% TODO: what is a? proof idea for this Seidenberg theorem (see Floris)
+\begin{example}
+    In \cref{ex:radial holonomy} we saw that the radial fibration has trivial
+    holonomy, which can be seen in light of this proposition from the fact that
+    blowing it up gives a smooth foliation (\cref{ex:blowup radial}).
+\end{example}
+
+% TODO: where does this go?
 
 \begin{theorem}[Seidenberg, \cite{seidenberg_68}]\label{thm:seidenberg}
     If $(X,\scrF)$ is a foliated surface, and $p\in\Sing(\scrF)$, then there is
@@ -751,6 +775,8 @@ $\tilde\scrF$.
     induced foliation $\tilde\scrF$ has only reduced singularities on the fiber
     over $p$.
 \end{theorem}
+
+% TODO: proof sketch
 
 % TODO: canonical singularities = reduced + Poincare-Dulac?
 % mention minimal models (F-exceptional curves), and MMP for foliations
