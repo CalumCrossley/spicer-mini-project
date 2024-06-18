@@ -251,7 +251,7 @@ see \cite{camacho_88}.
 \begin{remark}
     As a consequence of \cref{thm:frobenius}, if two invariant curves intersect
     (or if an invariant curve has a node), then the intersection point is a
-    singularity of the foliation. % TODO: nodal example would be cool
+    singularity of the foliation.
 \end{remark}
 
 It is worth noting that while the leaves of the foliation can always be locally
@@ -453,10 +453,7 @@ have a generator $A\pdv{}{x}+B\pdv{}{y}$ for $\scrF$.
             &\equiv c_1(L)^2 \mod2
     \end{align*}
     for any line bundle $L$. Hence a foliation of $\P^2$ must have an odd number
-    of singularities, and in particular at least one. This can be seen in
-    analogy with the Poincar\'e--Hopf theorem, where the multiplicity of a
-    singularity of $\scrF$ corresponds to the index of the zero of the
-    generating vector field.
+    of singularities, and in particular at least one.
 \end{example}
 
 \begin{remark}
@@ -743,7 +740,6 @@ which can be shown from the normal forms. Recall that $K_{\tilde X}=K_X+E$, so
         = \pi^*K_\scrF+(1-a)E.
 \end{equation*}
 Hence for reduced singularities we get $K_{\tilde\scrF}\ge\pi^*K_\scrF$.
-% TODO: singularity with a=0 example
 
 We now make a remark about the holonomy of the foliation $\tilde\scrF$. For each
 separatrix $C$ through $p$, the strict transform $\tilde C\subset\tilde X$ is an
@@ -767,7 +763,7 @@ point $q$, which may or may not be a singularity of $\tilde\scrF$.
     blowing it up gives a smooth foliation (\cref{ex:blowup radial}).
 \end{example}
 
-% TODO: where does this go?
+We conclude the section by citing Seidenberg's theorem on reduced singularities.
 
 \begin{theorem}[Seidenberg, \cite{seidenberg_68}]\label{thm:seidenberg}
     If $(X,\scrF)$ is a foliated surface, and $p\in\Sing(\scrF)$, then there is
@@ -776,7 +772,7 @@ point $q$, which may or may not be a singularity of $\tilde\scrF$.
     over $p$.
 \end{theorem}
 
-% TODO: proof sketch
-
-% TODO: canonical singularities = reduced + Poincare-Dulac?
-% mention minimal models (F-exceptional curves), and MMP for foliations
+The basic idea of the proof is to keep track of multiplicities when blowing up,
+allowing to pass to the case where the linearization is non-zero, and case
+analysis of the vanishing orders along the exceptional divisors allows to
+conclude. See \cite[\S1]{brunella_book} for details.

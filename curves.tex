@@ -50,27 +50,52 @@ intersections.
 
 \subsection{Vanishing order}
 
-For a curve which is $\scrF$-invariant, the 1-form defining $\scrF$ vanishes
-along the curve, and we can ask about the order of this vanishing.
+For a curve $C$ which is $\scrF$-invariant, the 1-form defining $\scrF$ vanishes
+along the curve, and we can ask about the order of this vanishing. Suppose $f$
+is a local equation defining $C$, and $\omega$ is the 1-form defining $\scrF$
+near $p$. Since $\omega$ vanishes on $C$, we can write
+$g\cdot\omega=h\cdot df+f\cdot\eta$ for some holomorphic functions $g,h$ and
+1-form $\eta$, where $h$ may be assumed coprime to $f$, \cite{neto_86}. (Roughly
+speaking this comes from $\Omega^1_C=\O_X/(f)\otimes\Omega^1_X/(df)$.) The
+meromorphic function $(h/g)|_C$ is in fact independent of this decomposition,
+being the residue of $\frac{\omega}{f}=\frac{h}{g}\frac{df}{f}+\frac{\eta}{g}$
+along $C$.
 
 \begin{definition}
-    Suppose $C$ is an $\scrF$-invariant curve, and $p\in C$. We define the
-    \emph{vanishing order} of $\scrF$ along $C$ at $p$ as
+    We define the \emph{vanishing index} of $\scrF$ along $C$ at $p$ as
     \begin{equation*}
         Z(\scrF,C,p) = \ord_p\biggl(\frac{h}{g}\biggr)\bigg|_C,
     \end{equation*}
-    where blah. We may then define the total vanishing order of $\scrF$ along
-    $C$:
+    which is independent of the choice of defining equation $f$ and 1-form
+    $\omega$ since multiplication by a non-vanishing holomorphic function does
+    not affect vanishing order. We may then define the total vanishing index of
+    $\scrF$ along $C$:
     \begin{equation*}
         Z(\scrF,C) = \sum_{p\in C}Z(\scrF,C,p).
     \end{equation*}
 \end{definition}
 
-% smooth implies zero, so finite sum
+\begin{remark}
+    If $p\notin\Sing(\scrF)$, then by \cref{thm:frobenius} we may assume
+    $\omega=df$, so $h/g=1$ and $Z(\scrF,C,p)=0$. So really this index is an
+    invariant of separatrices. This shows that the sum defining $Z(\scrF,C)$ is
+    finite.
+\end{remark}
 
-% negative example!
-
-% other example
+\begin{remark}
+    The meromorphic function $h/g$ may actually have a pole at $p$, so that
+    $Z(\scrF,C,p)$ is negative. Consider the foliation given by
+    $\omega=7ydx-4xdy$, with separatrix cut out by $f=x^{7}-y^{4}$. Then
+    \begin{align*}
+        \omega = \frac{xy\cdot df - 4xdy\cdot f}{x^4},
+    \end{align*}
+    so the index is the order of vanishing of $y/x^{4-1}$ on $C=\{f=0\}$ at
+    $p=(0,0)$. From the normalization $t\mapsto(t^{4},t^{7})$ we compute
+    $Z(\scrF,C,p)=7-4(4-1)=-5$. Fortunately this only occurs for singularities
+    with infinitely many separatrices (necessarily non-reduced), and when $C$ is
+    smooth we get agreement with the Poincar\'e--Hopf index at $p$ of the vector
+    field generating the foliation; \cite{brunella_97}.
+\end{remark}
 
 \begin{proposition}
     Suppose $C$ is an $\scrF$-invariant curve. Then
@@ -83,9 +108,6 @@ along the curve, and we can ask about the order of this vanishing.
     $(h/g)|_C$ defines a meromorphic section of $N_\scrF\otimes\O(-C)|_C$.
     % TODO
 \end{proof}
-
-% where does this go?
-% K_X.C+C^2 = -chi(C) euler characteristic of smoothing
 
 \subsection{A rational example}\label{sec:pencil}
 
