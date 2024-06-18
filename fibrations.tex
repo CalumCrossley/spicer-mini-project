@@ -21,7 +21,7 @@ construction.
 
 In the converse direction, there is a general statement which can be made:
 
-\begin{proposition}
+\begin{proposition}\label{prop:fibration}
     Suppose $(X,\scrF)$ is a foliated surface, such that for a general $x\in X$
     the leaf of $\scrF$ through $x$ is algebraic. Then there exists a rational
     map $X\dashrightarrow Y$ such that $T_{X/Y}$ and $T_\scrF$ are isomorphic on
@@ -63,6 +63,7 @@ foliation $\scrF$ to consist of rational curves. We present a theorem due to
 Miyaoka which asserts a more general result of this form.
 
 % condition = K_F pseff?
+
 \begin{theorem}[Miyaoka]
     Suppose $(X,\scrF)$ is a foliated surface, and $H$ is an ample divisor on
     $X$ such that $K_\scrF\cdot H<0$. Then there is a birational morphism
@@ -70,25 +71,39 @@ Miyaoka which asserts a more general result of this form.
     fiber of $f$ is rational, and $\scrF$ is the foliation induced by $f$.
 \end{theorem}
 
-\begin{remark}
-    % TODO: cleanup
-    % necessary
-    Consider a fibration $f:X\to C$ where the general fiber of $f$ is rational. For
-    example $X=\P^1\times\P^1$ with the projection to the first coordinate.
-    $K_\scrF=K_{X/C}-\{\text{effective supported on fibers}\}$,
-    $K_\scrF\cdot F=K_X\cdot F=-2$ for fiber $F$, $F$ nef, so for $H$ ample $nF+H$
-    also ample, with $K_\scrF\cdot(nF+H)=-2n+K_\scrF\cdot H<0$ for $n\gg0$.
-\end{remark}
-
 \begin{proof}[Proof (Bogomolov, McQuillan)]
-    Bertini theorem $\implies$ find $C\in|nH|$ smooth disjoint from
-    $\Sing(\scrF)$. Let $Y=X\times C$. Consider the rank 1 foliation $\scrG$ on
-    $Y$ given by $\scrG|_{X\times\{c\}}=\scrF$. Consider the diagonal
-    $\Delta\subset C\times C\subset X\times C=Y$, which is disjoint from
-    $\Sing(\scrG)$. Take the integral curves of $\scrG$ through $\Delta$ in a
-    neighbourhood of $\Delta$ to define an analytic surface $S$ through
-    $\Delta$. Then $N_{\Delta/S}\simeq T_\scrG|_\Delta\simeq T_\scrF|_C$, so
-    $\deg N_{\Delta/S}=T_\scrF\cdot C=nT_\scrF\cdot H>0$. Hence $N_{\Delta/S}$
-    is ample. It follows that $S$ is algebraic (Floris 1st lecture). Let
-    $\Sigma$ be the Zariski closure of $S$. % TODO: complete this (from Floris)
+    By Bertini's theorem, for $n\gg0$ we have some smooth curve $C\in|nH|$ which
+    is disjoint from $\Sing(\scrF)$. Write $Y=X\times C$, and consider the rank
+    1 foliation $\scrG$ on $Y$ given by $\scrF$ on each fiber. The diagonal
+    $D\subset C\times C\subset Y$ is disjoint from $\Sing(\scrG)$, and
+    integrating $\scrG$ at the points of $D$ gives a local analytic surface $V$
+    through $D$.
+
+    % TODO: picture
+    By construction $N_{D/S}=T_\scrG|_D$, which is identified with $T_\scrF|_C$,
+    so $\deg N_{D/S}=T_\scrF\cdot C=nT_\scrF\cdot H>0$. Hence $N_{D/S}$ is
+    ample, and this forces the surface $V$ to be algebraic by a theorem of
+    Andreotti; see \cite[Thm 3.4]{bost_13}. Write $S$ for its Zariski closure.
+    We have shown that the leaves of $\scrG$ through $D$ are algebraic, and
+    hence the leaves of $\scrF$ are algebraic. By \cref{prop:fibration} this
+    means that $\scrF$ is induced by a fibration, and it suffices to show that
+    the general fiber is rational.
+
+    We have a fibration $f:S\to C$, inducing a foliation $\scrH$ on $S$ which
+    agrees with $\scrG$ locally around $D$. The fibers of $f$ are reduced, so
+    $K_\scrH=K_{S/C}$. Now by Fujita semipositivity, if the general fiber is not
+    rational then $K_{S/C}$ is a sum of a nef divisor and an effective disivor,
+    and in particular $K_{S/C}$ is nef. But
+    $K_{S/C}\cdot D=K_\scrH\cdot D=K_\scrF\cdot C<0$, so the general fiber must
+    be rational. Since the fibers of $f$ correspond to the leaves of $\scrF$, we
+    are done.
 \end{proof}
+
+\begin{remark}
+    The condition in this theorem is sharp; suppose $f:X\to C$ is a fibration
+    inducing a foliation $\scrF$. Then $K_\scrF=K_{X/C}-D$ where $D\ge0$ is
+    supported on fibers of $f$. If $F$ is a general fiber, then
+    $K_\scrF\cdot F=K_X\cdot F=-2$, and $F$ is nef. Hence if $H$ is ample we
+    have that $nF+H$ is also ample for $n\ge0$, and
+    $K_\scrF\cdot(nF+H)=-2n+K_\scrF\cdot H$ is negative for $n\gg0$.
+\end{remark}
