@@ -10,17 +10,15 @@
     Zariski dense holomorphic curves.
 \end{conjecture}
 
-% TODO: clean this up
-Blah ideas due to Bogomolov, McQuillan. We consider a holomorphic map
-$f:\C\to X$, which induces also a map $df:\C\to\P(T_X)$. Writing $\O(-1)$ for
-the relative tautological bundle on $\P(T_X)$, we have (tautologically)
-$(df)^*\O(-1)=T_C$. Now suppose $\O(1)$ is big. % TODO: T_X vs Omega^1_X stuff
-This assumption is intended as an approximation of the condition of being
+We are considering a holomorphic map $f:\C\to X$, which induces also a map
+$df:\C\to\P(T_X)$. Writing $\O(-1)$ for the relative tautological bundle on
+$\P(T_X)$, we have (tautologically) $(df)^*\O(-1)=T_C$. Now suppose $\O(1)$ is
+big. This assumption is intended as an approximation of the condition of being
 general type. We may find an effective divisor $D\ge0$ in $\P(T_X)$ representing
 $\O(1)$, which is locally a section of the bundle over $X$, although possibly
-not globally. For simplicity, we assume that it is a section, which can be
-ensured by a suitable base-change. Then we have a section of $\P(T_X)$, which as
-mentioned earlier is precisely a foliation, say $\scrF$, on $X$.
+not globally. Up to finite degree issues, this gives a rational section of
+$\P(T_X)$, which as mentioned earlier is precisely the data of a foliation, say
+$\scrF$, on $X$.
 
 Now from $(df)^*\O(-1)=T_C$ we get $(df)^*\O(1)=K_C=2g(C)-2$, so if $C$ is
 rational $C\cdot D<0$. But this forces $C$ to be a component of $D$, and so in
@@ -37,8 +35,6 @@ defined in \cite{hartshorne_66}. % TODO: details / sketch
 
 \subsection{Ampleness and slope stability}
 
-% TODO: figure out T_X vs Omega^1_X
-
 Motivated by the previous arguments, suppose we want an example of a surface $X$
 such that $\O_{\P(T_X)}(1)$ is big, or equivalently $T_X$ is ample. For a
 somewhat flexible class of general type surfaces, we will look among high degree
@@ -51,45 +47,69 @@ where $N_{X/\P^3}=\O(-d)$ by adjunction. Taking determinants, we see that
 $\O(-4)=K_{\P^3}=K_X\otimes\O(-d)$, so at least $\det\Omega^1_X=K_X$ is ample
 for $d\gg0$. It is not true that a vector bundle is ample whenever its
 determinant bundle is ample (although the converse does hold), % TODO: example, proof
-but in this
-particular case it is actually sufficient due to the following result.
+but in this particular case it is actually sufficient due to the following
+result.
 
-% TODO: prove this somewhere
-\begin{proposition}
+\begin{proposition}\label{prop:stable ample}
     If $\calE$ is a vector bundle such that $\det\calE$ is ample, and $\calE$ is
-    semi-stable, then $\calE$ is ample.
+    slope semi-stable, then $\calE$ is ample.
 \end{proposition}
 
-% TODO: mention Omega^1_X being semi-stable because of Kahler-Einstein metrics
-% easier proof?
+% TODO: proof
+
+In order to apply this, we appeal to two major theorems:
+
+\begin{theorem}[Aubin, Yau]
+    For a general type smooth complex projective variety, the tangent bundle
+    admits a K\"ahler--Einstein metric.
+\end{theorem}
+
+\begin{theorem}[Kobayashi, L\"ubke]
+    If the tangent bundle of a smooth complex projective variety admits a
+    K\"ahler--Einstein metric, then it is slope stable.
+\end{theorem}
+
+Note that stability of a vector bundle is equivalence to stability of its dual,
+so these results imply stability of $\Omega^1_X$ allowing us to apply
+\cref{prop:stable ample}.
+
+% TODO: easier reason for Omega^1_X stability?
 
 % TODO: construct example, find the foliation?
 
-Recall the notion of slope stability:
+% TODO: ample definitions
 
-\begin{definition}
-    We define the \emph{slope} of a coherent sheaf $\calE$ to be
-    $\mu(\calE)\coloneqq\deg\calE/\rank\calE$. The sheaf is (slope)
-    \emph{stable} if for all subsheaves $0\to\calF\to\calE$ we have
-    $\mu(\calF)\le\calE$, and (slope) \emph{semi-stable} if the same holds but
-    with a non-strict inequality. % TODO: check this
-\end{definition}
+% TODO: slope stability definitions
 
-This definition is motivated by the application of geometric invariant theory in
-the construction of moduli spaces of sheaves. A key theorem in the stability
-theory of sheaves is the following:
+% only consider slope stability, drop slope
 
-% TODO: K-E definition, reference, context
-\begin{theorem}[Yau]
-    A vector bundle $\calE$ is stable iff it admits a K\"ahler--Einstein metric.
+This definition is motivated by the application of Mumford's geometric invariant
+theory in the construction of moduli spaces of sheaves. A key theorem in the
+stability theory of sheaves is the following:
+
+\begin{theorem}[Donaldson--Uhlenbeck--Yau]
+    If $X$ is a smooth complex projective manifold, then a holomorphic vector
+    bundle $\calE$ on $X$ is slope polystable iff it admits a Hermite--Einstein
+    metric.
+    % irreducible vector bundles => can drop poly
 \end{theorem}
 
+\begin{lemma}
+    For a vector bundle $V$, we have $V^*=V\otimes(\det V)^*$.
+\end{lemma}
+
 \begin{proposition}
-    If $\calE,\calE'$ are stable vector bundles, then so is $\calE\otimes\calE'$.
+    A vector bundle $\calE$ is (semi)stable iff $\calE^*$ is (semi)stable.
 \end{proposition}
 
 \begin{proposition}
-    If $\calE,\calE'$ are stable vector bundles, then so is $\calE\oplus\calE'$.
+    If $\calE,\calE'$ are semistable vector bundles, then so is
+    $\calE\otimes\calE'$.
 \end{proposition}
 
-% TODO: prove one directly, the other is done via Kahler-Einstein metrics
+\begin{proposition}
+    If $\calE,\calE'$ are semistable vector bundles, then so is
+    $\calE\oplus\calE'$.
+\end{proposition}
+
+% TODO: prove one directly, the other is done via Hermite--Einstein metrics
