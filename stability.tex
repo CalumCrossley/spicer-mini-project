@@ -59,6 +59,11 @@ We recall from \cite{hartshorne_66} the notion of an ample vector bundle:
     global sections for $n\gg0$.
 \end{definition}
 
+\begin{remark}
+    When $\calE=\calL$ is a line bundle we have $\Sym^n\calL=\calL^{\otimes n}$,
+    so this recovers the definition of ample for line bundles.
+\end{remark}
+
 The key point to proving \cref{prop:ample} is the following fact:
 
 \begin{lemma}
@@ -99,9 +104,6 @@ for $d\gg0$. It is not true that a vector bundle with ample determinant bundle
 is always itself ample (although the converse holds). However, in this
 particular case it is sufficient, due to the following result:
 
-% TODO: counterexample
-% TODO: explicit example with foliation?
-
 \begin{proposition}\label{prop:stable ample}
     If $\calE$ is a slope semistable vector bundle, and $\det\calE$ is ample,
     then $\calE$ is ample.
@@ -109,6 +111,13 @@ particular case it is sufficient, due to the following result:
 
 To understand this proposition, we will move on to study slope stability in the
 next section.
+
+\begin{example}
+    For an example where $\det\calE$ is ample but $\calE$ is \emph{not} ample,
+    consider $\calE=\O(-1)\oplus\O(2)$ on $\P^1$. Then $\det\calE=\O(1)$ is
+    clearly ample, but $\calE$ cannot be ample as the summand $\O(-1)$ is not
+    ample.
+\end{example}
 
 \begin{remark}
     To see that $\det\calE$ is ample whenever $\calE$ is ample, note that
@@ -128,24 +137,24 @@ geometric invariant theory in the construction of moduli spaces of sheaves.
 
 \begin{definition}
     Suppose $X$ is a complex projective variety, with ample line bundle $\O(1)$.
-    For a coherent sheaf $\calE$ of pure dimension on $X$, we define the
-    \emph{slope} of $\calE$ to be
+    For a torsion-free coherent sheaf $\calE$ on $X$, we define the \emph{slope}
+    of $\calE$ to be
     \begin{equation*}
         \mu(\calE) = \deg\calE / \rank\calE,
     \end{equation*}
-    where $\deg\calE/(\dim X)!$ is the leading coefficient of the Hilbert
-    polynomial $m\mapsto\chi(\calE\otimes\O(m))$. We say $\calE$ is slope
-    \emph{semistable} if for any subsheaf $\calF\subset\calE$ we have
-    $\mu(\calF)\le\mu(\calE)$, and \emph{stable} if the inequality is strict for
-    proper subsheaves. A direct sum of stable sheaves of the same slope is
-    called \emph{polystable}.
+    where $\deg\calE/(\dim X)!$ is the coefficient of $m^{\dim X}$ in the
+    Hilbert polynomial $m\mapsto\chi(\calE\otimes\O(m))$. We say $\calE$ is
+    slope \emph{semistable} if for any subsheaf $\calF\subset\calE$ with
+    $0<\rank\calF<\rank\calE$ we have $\mu(\calF)\le\mu(\calE)$, and
+    \emph{stable} if the inequality is strict. A direct sum of stable sheaves of
+    the same slope is called \emph{polystable}.
 \end{definition}
 
 We will only be considering slope stability, and so we drop the slope prefix and
 write simply ``$\calE$ is (semi/poly)stable''. 
 
 \begin{remark}
-    Line bundles are trivially stable, having no proper subsheaves.
+    Line bundles are trivially stable, having no subsheaves of smaller rank.
 \end{remark}
 
 \subsubsection{Relation to ample vector bundles}
@@ -158,7 +167,7 @@ two major theorems:
     admits a K\"ahler--Einstein metric.
 \end{theorem}
 
-\begin{theorem}[Kobayashi, L\"ubke \cite{lubke_83}]
+\begin{theorem}[Kobayashi \cite{kobayashi_book}, L\"ubke \cite{lubke_83}]
     If the tangent bundle of a smooth complex projective variety admits a
     K\"ahler--Einstein metric, then it is stable.
 \end{theorem}
@@ -178,7 +187,6 @@ formerly known as the Calabi conjecture.
     If $X$ is a smooth complex projective manifold, then a holomorphic vector
     bundle $\calE$ on $X$ is polystable iff it admits a Hermite--Einstein
     metric.
-    % irreducible vector bundles => can drop poly
 \end{theorem}
 
 \begin{definition}
@@ -204,33 +212,9 @@ might be related.
 
 We now turn to look at some basic properties of stability.
 
-\begin{proposition}
-    If
-    \begin{equation*}
-        0\to\calE'\to\calE\to\calE''\to0
-    \end{equation*}
-    is a short exact sequence of vector
-    bundles, then
-    \begin{equation*}
-        \min\{\mu(\calE'),\mu(\calE'')\}
-            \le \mu(\calE) \le \max\{\mu(\calE'),\mu(\calE'')\}.
-    \end{equation*}
-\end{proposition}
-
-\begin{proof}
-    Recall that degree and rank are additive in exact sequences. Hence
-    \begin{align*}
-        \mu(\calE)
-            &= \frac{\deg\calE'+\deg\calE''}{\rank\calE'+\rank\calE''} \\
-            &= \frac{\rank\calE'}{\rank\calE'+\rank\calE''}\cdot\mu(\calE')
-            + \frac{\rank\calE''}{\rank\calE'+\rank\calE''}\cdot\mu(\calE''),
-    \end{align*}
-    which is a positive weighted average of total weight 1.
-\end{proof}
-
 \begin{proposition}\label{prop:line}
-    A vector bundle $\calE$ is stable iff $\calE\otimes\calL$ is stable for any
-    line bundle $\calL$.
+    A torsion-free coherent sheaf $\calE$ is stable iff $\calE\otimes\calL$ is
+    stable for any line bundle $\calL$.
 \end{proposition}
 
 \begin{proof}
@@ -253,14 +237,96 @@ We now turn to look at some basic properties of stability.
     follows from $\cref{prop:line}$.
 \end{proof}
 
-% TODO: find easy proof
+\begin{proposition}\label{prop:slope SES}
+    If
+    \begin{equation*}
+        0\to\calE'\to\calE\to\calE''\to0
+    \end{equation*}
+    is a short exact sequence of torsion-free coherent sheaves, then
+    \begin{equation*}
+        \min\{\mu(\calE'),\mu(\calE'')\}
+            \le \mu(\calE) \le \max\{\mu(\calE'),\mu(\calE'')\},
+    \end{equation*}
+    with equality at either end iff $\mu(\calE')=\mu(\calE)=\mu(\calE'')$ or one
+    of $\calE'$ and $\calE''$ vanishes.
+\end{proposition}
+
+\begin{proof}
+    Recall that degree and rank are additive in exact sequences. Hence
+    \begin{align*}
+        \mu(\calE)
+            = \frac{\deg\calE'+\deg\calE''}{\rank\calE'+\rank\calE''}
+            = \frac{\rank\calE'}{\rank\calE'+\rank\calE''}\cdot\mu(\calE')
+            + \frac{\rank\calE''}{\rank\calE'+\rank\calE''}\cdot\mu(\calE''),
+    \end{align*}
+    which is a positive weighted average of total weight 1. If the endpoints of
+    the average are distinct, we can only have an equality if one of the weights
+    vanishes.
+\end{proof}
+
+\begin{proposition}\label{prop:duality}
+    A torsion-free coherent sheaf $\calE$ is semistable (resp. stable) iff for
+    all quotients $\calG$ of $\calE$ with $0<\rank\calG<\rank\calE$ we have
+    $\mu(\calG)\ge\mu(\calE)$ (resp. $\mu(\calG)>\mu(\calE)$).
+
+    In particular, $\calE$ is (semi)stable iff $\calE^\vee$ is.
+\end{proposition}
+
+\begin{proof}
+    This is immediate from \cref{prop:slope SES}.
+\end{proof}
 
 \begin{proposition}
+    If
+    \begin{equation*}
+        0\to\calE'\to\calE\to\calE''\to0
+    \end{equation*}
+    is a short exact sequence of nonzero torsion-free coherent sheaves with
+    $\mu(\calE')=\mu(\calE)=\mu(\calE'')$, then $\calE$ is semistable iff
+    $\calE'$ and $\calE''$ are both semistable.
+\end{proposition}
+
+\begin{proof}
+    If $\calE$ is semistable then $\calE'$ is semistable by transitivity of
+    subsheaves, and similarly for $\calE''$ using \cref{prop:duality}. For the
+    converse, assume $\calE'$ and $\calE''$ are semistable, and $\calF$ is a
+    subsheaf of $\calE$. We have
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \ar[r] & \calE' \ar[r] & \calE \ar[r] & \calE'' \ar[r] & 0 \\
+            0 \ar[r] & \calF' \ar[r] \ar[u,hook] &
+                \calF \ar[r] \ar[u,hook] & \calF'' \ar[r] \ar[u,hook] & 0,
+        \end{tikzcd}
+    \end{equation*}
+    where $\calF'=\calE'\cap\calF$. If $\calF'=0$ then
+    $\mu(\calF)=\mu(\calF'')\le\mu(\calE'')=\mu(\calE)$, and similarly for
+    $\calF''=0$. Otherwise $\mu(\calF')\le\mu(\calE')=\mu(\calE)$, and similarly
+    for $\calF''$, so $\mu(\calF)\le\mu(\calE)$ by \cref{prop:slope SES}.
+\end{proof}
+
+\begin{corollary}
+    If $\calE,\calE'$ are semistable with the same slope, then
+    $\calE\oplus\calE'$ is also semistable with that same slope. Hence
+    polystable implies semistable.
+\end{corollary}
+
+\begin{remark}
+    If $\mu(\calE)\ne\mu(\calE')$, then $\calE\oplus\calE'$ is not semistable in
+    general. For example, consider $\O\oplus\O(1)$ on $\P^1$. We have
+    $\mu(\O\oplus\O(1))=1/2$, while $\mu(\O(1))=1$.
+\end{remark}
+
+We conclude by noting the following innocuous-looking fact.
+
+\begin{theorem}[Narasimhan--Sedhadri \cite{narasimhan_65}]
     If $\calE,\calE'$ are semistable vector bundles, then so is
     $\calE\otimes\calE'$.
-\end{proposition}
+\end{theorem}
 
-\begin{proposition}
-    If $\calE,\calE'$ are semistable vector bundles, then so is
-    $\calE\oplus\calE'$.
-\end{proposition}
+This fact can be seen from the Donaldson--Uhlenbeck--Yau Theorem, because tensor
+products of Hermite--Einstein metrics are again Hermite--Einstein; for
+$h=h_1\otimes h_2$ we have $F_A=F_{A_1}\otimes1+1\otimes F_{A_2}$. For a long
+time there have been no elementary approaches found for proving this theorem,
+and it is worth noting that the statement fails in positive characteristic even
+for curves. See \cite{maculan_18} for a nice exposition on the context of this
+tensor product theorem, and the relation to representation theory.
