@@ -1,5 +1,8 @@
 
-% TODO: in this section we blah
+We introduce the Green--Griffiths conjecture, and sketch some of the ideas due
+to Bogomolov and McQuillan applying the theory of foliations to the problem.
+Motivated by an example of these ideas, we digress into a discussion of some
+basic concepts of slope stability for sheaves.
 
 \subsection{The Green--Griffiths conjecture}
 
@@ -47,8 +50,8 @@ notion of ``ample'' for the vector bundle $T_X$.
 
 \begin{proposition}[\cite{hartshorne_66}, 3.2] \label{prop:ample}
     Let $\calE$ be a vector bundle on a variety $X$. Then $\calE$ is an ample
-    vector bundle on $X$ iff the tautological line bundle $\O_{\P(\calE)}(1)$ on
-    $\P(\calE)$ is ample.
+    vector bundle on $X$ iff the tautological line bundle
+    $\O_{\P(\calE^\vee)}(1)$ on $\P(\calE^\vee)$ is ample.
 \end{proposition}
 
 We recall from \cite{hartshorne_66} the notion of an ample vector bundle:
@@ -67,10 +70,10 @@ We recall from \cite{hartshorne_66} the notion of an ample vector bundle:
 The key point to proving \cref{prop:ample} is the following fact:
 
 \begin{lemma}
-    If $p:\P(\calE)\to X$ is the projection map, then for every coherent sheaf
-    $\calF$ on $X$ we have
+    If $p:\P(\calE^\vee)\to X$ is the projection map, then for every coherent
+    sheaf $\calF$ on $X$ we have
     \begin{equation*}
-        \dR p_*(p^*\calF\otimes\O_{\P(\calE)}(n))
+        \dR p_*(p^*\calF\otimes\O_{\P(\calE^\vee)}(n))
             = \calF\otimes\Sym^n(\calE).
     \end{equation*}
 \end{lemma}
@@ -78,13 +81,13 @@ The key point to proving \cref{prop:ample} is the following fact:
 \begin{proof}
     By the projection formula we have
     \begin{equation*}
-        \dR p_*(p^*\calF\otimes\O_{\P(\calE)}(n))
-            = \calF\otimes^\dL\dR p_*\O_{\P(\calE)}(n),
+        \dR p_*(p^*\calF\otimes\O_{\P(\calE^\vee)}(n))
+            = \calF\otimes^\dL\dR p_*\O_{\P(\calE^\vee)}(n),
     \end{equation*}
-    and $\dR p_*\O_{\P(\calE)}(n)=\Sym^n\calE$ as a relative version of
+    and $\dR p_*\O_{\P(\calE^\vee)}(n)=\Sym^n\calE$ as a relative version of
     \begin{equation*}
         H^k(\O_{\P(V)}(n)) = \begin{dcases*}
-            \Sym^nV & $k=0$, $n\ge0$, \\ % is there a dual missing?
+            \Sym^nV^\vee & $k=0$, $n\ge0$, \\
             0 & otherwise.
         \end{dcases*}
     \end{equation*}
@@ -102,15 +105,29 @@ and $N_{X/\P^3}=\O(-d)$ by adjunction. Taking determinants we see that
 $\O(-4)=K_{\P^3}=K_X\otimes\O(-d)$, so at least $\det\Omega^1_X=K_X$ is ample
 for $d\gg0$. It is not true that a vector bundle with ample determinant bundle
 is always itself ample (although the converse holds). However, in this
-particular case it is sufficient, due to the following result:
+particular case we can try to apply the following result:
 
-\begin{proposition}\label{prop:stable ample}
-    If $\calE$ is a slope semistable vector bundle, and $\det\calE$ is ample,
-    then $\calE$ is ample.
-\end{proposition}
+\begin{theorem}[\cite{fulger_22}, 3.10]\label{thm:stable ample}
+    If $\calE$ is a slope semistable vector bundle, and the discriminant
+    \begin{equation*}
+        \Delta(\calE)
+            = 2\rank\calE\cdot c_2(\calE) - (\rank\calE-1)c_1(\calE)^2
+    \end{equation*}
+    is zero, then $\calE$ is ample iff $\det\calE$ is ample.
+\end{theorem}
 
-To understand this proposition, we will move on to study slope stability in the
-next section.
+We will see in the next section that $\Omega^1_X$ is slope semistable (in fact
+slope stable), after first introducing the notion of slope stability. However,
+in computing the discriminant we find
+\begin{align*}
+    \Delta(\Omega^1_X)
+        &= 4c_2(X) - c_1(X)^2 \\
+        &= 4\chi(X) - K_X\cdot K_X \\
+        &= 4\chi(X) - d(d-4)^2.
+\end{align*}
+In fact $\chi(X)=d(d^2-4d+6)$ \cite{maxim_24}, giving
+$\Delta(\Omega^1_X)=3d^2-8d+8$. This is positive for all $d$, and so
+unfortunately the theorem doesn't apply in our example.
 
 \begin{example}
     For an example where $\det\calE$ is ample but $\calE$ is \emph{not} ample,
@@ -133,7 +150,9 @@ next section.
 \subsection{Slope stability}
 
 The notion of slope stability is motivated by the application of Mumford's
-geometric invariant theory in the construction of moduli spaces of sheaves.
+geometric invariant theory in the construction of moduli spaces of sheaves; it
+gives restricted classes of sheaves for which we can construct well-behaved
+moduli spaces via Grothendieck's Quot construction.
 
 \begin{definition}
     Suppose $X$ is a complex projective variety, with ample line bundle $\O(1)$.
@@ -173,10 +192,8 @@ two major theorems:
 \end{theorem}
 
 The stability of a vector bundle is equivalent to stability of its dual
-(\cref{prop:stable dual}), so these results imply stability of $\Omega^1_X$,
-allowing us to apply \cref{prop:stable ample}.
-
-% TODO: prove prop:stable ample
+(\cref{prop:stable dual}), so these results imply stability of $\Omega^1_X$ in
+our example earlier.
 
 \subsubsection{The Donaldson--Uhlenbeck--Yau Theorem}
 
@@ -234,7 +251,7 @@ We now turn to look at some basic properties of stability.
     Since $\calE=\calE^{\vee\vee}$, it suffices to prove the forward
     implication. Now $\calE^\vee=\calE\otimes(\det\calE)^\vee$, since a volume
     form defines a perfect pairing $\calE\otimes\calE\to\C$, so the result
-    follows from $\cref{prop:line}$.
+    follows from \cref{prop:line}.
 \end{proof}
 
 \begin{proposition}\label{prop:slope SES}
