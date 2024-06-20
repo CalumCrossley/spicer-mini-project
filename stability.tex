@@ -22,25 +22,23 @@ There is a more general form of the conjecture, as follows:
     curve $f:\C\to X$ factors through $Y$.
 \end{conjecture}
 
-Part of the motivating work involving foliations in algebraic geometry is an
-approach to the conjecture due to Bogomolov and McQuillan. We are considering a
-holomorphic map $f:\C\to X$, which induces also a map $df:\C\to\P(T_X)$. Writing
-$\O(-1)$ for the relative tautological bundle on $\P(T_X)$, we have
-(tautologically) $(df)^*\O(-1)=T_C$. Now suppose $\O(1)$ is big. This assumption
-is intended as an approximation of the condition of being general type. We may
-find an effective divisor $D\ge0$ in $\P(T_X)$ representing $\O(1)$, which is
-locally a section of the bundle over $X$, although possibly not globally. Up to
-finite degree issues, this gives a rational section of $\P(T_X)$, which as
-mentioned earlier is precisely the data of a foliation on $X$, call it $\scrF$.
+We are considering a holomorphic map $f:\C\to X$, which induces also a map
+$df:\C\to\P(T_X)$. Writing $\O(-1)$ for the relative tautological bundle on
+$\P(T_X)$, we have (tautologically) $(df)^*\O(-1)=T_C$. Now suppose $\O(1)$ is
+big. This assumption is intended as an approximation of the condition of being
+general type. We may find an effective divisor $D\ge0$ in $\P(T_X)$ representing
+$\O(1)$, which is locally a section of the bundle over $X$, although possibly
+not globally. Up to finite degree issues, this gives a rational section of
+$\P(T_X)$, which as mentioned earlier is precisely the data of a foliation on
+$X$, call it $\scrF$.
 
 Now from $(df)^*\O(-1)=T_C$ we get $(df)^*\O(1)=K_C=2g(C)-2$, so if $C$ is
 rational $C\cdot D<0$. But this forces $C$ to be a component of $D$, and so in
-fact $\scrF$ is tangent to $C$. % why?
-In other words, from the assumption that $\O(1)$ is big we have produced a
-foliation on $X$ which is tangent to every rational curve in $X$. The existence
-of such a foliation is a strong constraint, and this argument is part of work
-due to Bogomolov and McQuillan \cite{mcquillan_98} which lead to certain
-restricted results related to the conjecture.
+fact $\scrF$ is tangent to $C$. In other words, from the assumption that $\O(1)$
+is big we have produced a foliation on $X$ which is tangent to every rational
+curve in $X$. The existence of such a foliation is a strong constraint, and this
+argument is part of work due to Bogomolov and McQuillan \cite{mcquillan_98}
+which lead to certain restricted results related to the conjecture.
 
 \subsection{Ample vector bundles}
 
@@ -65,6 +63,17 @@ We recall from \cite{hartshorne_66} the notion of an ample vector bundle:
 \begin{remark}
     When $\calE=\calL$ is a line bundle we have $\Sym^n\calL=\calL^{\otimes n}$,
     so this recovers the definition of ample for line bundles.
+\end{remark}
+
+\begin{remark}
+    Motivated by the analogous statement for line bundles, one might ask whether
+    this definition is equivalent to requiring $\Sym^n\calE$ to give an
+    embedding into the corresponding Grassmannian for $n\gg0$. In fact this is
+    not true: take for example $\O\oplus\O(1)$ on $\P^1$. This is not ample,
+    since $\O(-1)\otimes\Sym^n(\O\oplus\O(1))$ has a summand of $\O(-1)$ for all
+    $n\ge0$. However, the complete system $(1\oplus0,0\oplus x,0\oplus y)$
+    induces an embedding $\P^1\hookrightarrow\Gr(2,\C^3)$;
+    $[x:y]\mapsto\langle(1,0,0),(0,x,y)\rangle$.
 \end{remark}
 
 The key point to proving \cref{prop:ample} is the following fact:
@@ -186,7 +195,7 @@ two major theorems:
     admits a K\"ahler--Einstein metric.
 \end{theorem}
 
-\begin{theorem}[Kobayashi \cite{kobayashi_book}, L\"ubke \cite{lubke_83}]
+\begin{theorem}[\cite{kobayashi_book}, \cite{lubke_83}]
     If the tangent bundle of a smooth complex projective variety admits a
     K\"ahler--Einstein metric, then it is stable.
 \end{theorem}
@@ -222,10 +231,12 @@ In fact the constant $\lambda$ is geometrically constrained:
     \deg\calE
         &= \int_Xc_1(\calE)\wedge\omega^{\dim X-1} \\
         &= \frac{i}{2\pi}\int_X\tr(F_A)\wedge\omega^{\dim X-1} \\
-        &= \frac{i}{2\pi}\lambda\rank\cal E\vol(X),
+        &= \frac{i}{2\pi}\lambda\rank\calE\vol(X),
 \end{align*}
 so $\lambda=-2\pi i\mu(\calE)/\vol(X)$, which indicates how slope stability
-might be related.
+might be related. Indeed, the existence of a Hermite--Einstein metric given
+polystability is the hard part of the theorem; the other direction is relatively
+easy.
 
 We now turn to look at some basic properties of stability.
 
@@ -285,8 +296,6 @@ We now turn to look at some basic properties of stability.
     A torsion-free coherent sheaf $\calE$ is semistable (resp. stable) iff for
     all quotients $\calG$ of $\calE$ with $0<\rank\calG<\rank\calE$ we have
     $\mu(\calG)\ge\mu(\calE)$ (resp. $\mu(\calG)>\mu(\calE)$).
-
-    In particular, $\calE$ is (semi)stable iff $\calE^\vee$ is.
 \end{proposition}
 
 \begin{proof}

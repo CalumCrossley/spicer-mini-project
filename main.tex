@@ -6,6 +6,10 @@
 
 \addbibresource{bibliography.bib}
 
+% push hbox warnings in bibliography under the rug
+\usepackage{etoolbox}
+\apptocmd{\sloppy}{\hbadness 10000\relax}{}{}
+
 \title{Foliations of Algebraic Surfaces}
 \author{Calum Crossley}
 \date{}
@@ -22,6 +26,7 @@
 
 \include{body}
 
+\sloppy
 \printbibliography
 
 \end{document}

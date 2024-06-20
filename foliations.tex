@@ -96,8 +96,7 @@ general definition of foliations for higher dimensions.
         \item $T_\scrF$ is closed under the Lie bracket on $T_X$.
     \end{enumerate}
     The singular locus $\Sing(\scrF)$ is the singular locus of $X$ together with
-    the locus where the stalks of $T_\scrF$ are not locally free submodules of
-    the stalks of $T_X$.
+    the locus where the fiber of $T_\scrF\to T_X$ drops in rank.
 \end{definition}
 
 \begin{remark}
@@ -228,9 +227,8 @@ In fact, we have the following theorem (cf. \cite[Thm 2.20]{voisin_book}).
 \end{theorem}
 
 Hence near smooth points we always have locally defined analytic leaves, given
-as the fibers of a holomorphic submersion. In particular, invariant curves can
-only intersect at singularities of the foliation. A key result for the local
-structure at singular points is the ``separatrix theorem''.
+as the fibers of a holomorphic submersion. A key result for the local structure
+at singular points is the ``separatrix theorem''.
 
 \begin{definition}
     A \emph{separatrix} at $p\in\Sing(\scrF)$ is a local holomorphic curve $C$
@@ -535,14 +533,15 @@ linearization of the generating vector field, replacing
 \end{equation*}
 with
 \begin{equation*}
-    \biggl(\pdv{A}{x}\bigg|_p\cdot x+\pdv{A}{y}\bigg|_p\cdot y\biggr)\pdv{}{x}
-        + \biggl(\pdv{B}{x}\bigg|_p\cdot x+\pdv{B}{y}\bigg|_p\cdot y\biggr)
-            \pdv{}{y}.
+    \biggl(\pdv{A}{x}\bigg|_{(0,0)}\cdot x
+        + \pdv{A}{y}\bigg|_{(0,0)}\cdot y\biggr)\pdv{}{x}
+        + \biggl(\pdv{B}{x}\bigg|_{(0,0)}\cdot x
+            +\pdv{B}{y}\bigg|_{(0,0)}\cdot y\biggr)\pdv{}{y}.
 \end{equation*}
 The resulting linear system is integrable, with integral curves given by
 $t\mapsto e^{Jt}v_0$ for $J$ the Jacobian matrix of coefficients, so the salient
 properties of the linearized dynamics are determined by the eigenvalues
-$\lambda_1,\lambda_2$ of the matrix $J$, which is determined up to conjugation
+$\lambda_1,\lambda_2$ of the matrix $J$, which is determined (up to conjugation)
 by the choice of generating vector field.
 
 \begin{definition}
@@ -576,7 +575,7 @@ by the choice of generating vector field.
 In fact, reduced singularities have a classification with normal forms,
 depending on the values of $\lambda$ (see \cite[\S1]{brunella_book}). A key
 property of this classification is that the separatrices at a reduced
-singularity form a local complete intersection, with at most 2 components.
+singularity form a local complete intersection, having at most 2 components.
 Compare this with the non-reduced radial foliation of \cref{ex:parallel}, which
 has infinitely many separatrices. The significance of this class of
 singularities is that we can ``reduce'' to them after some sequence of blowups,
@@ -599,8 +598,7 @@ reduced.
     These vanish to second order along the exceptional divisor $E$, but
     factoring this out we get 1-forms $dt$ and $-ds$ on $U$ and $V$ which patch
     together to give a nowhere vanishing 1-form with values in the line bundle
-    $\O(-2E)$. (Note that $dt=-ds/s^2$, $-ds=dt/t^2$.) Pictorially this is
-    exactly as expected.
+    $\O(-2E)$. Pictorially this is exactly as expected.
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}
@@ -649,7 +647,7 @@ reduced.
     downstairs in lifting the singularity.
     \begin{figure}[H]
         \centering
-        \begin{tikzpicture}
+        \begin{tikzpicture}[scale=1.2]
             \draw[color=blue] (-2,-0.5) -- (0,-0.5);
             \draw[color=red] (-2,0.5) -- (0,0.5);
             \draw (-1,-1) -- (-1,1) node[anchor=south] {$E$};
@@ -691,7 +689,7 @@ reduced.
     the pullback doesn't vanish along $E$.
     \begin{figure}[H]
         \centering
-        \begin{tikzpicture}
+        \begin{tikzpicture}[scale=1.2]
             \draw[color=red] (-2,-1) -- (-2,1) node[anchor=south] {$E$};
             \draw (-3,0) -- (-1,0);
             \node[circle,fill,inner sep=1pt] at (-2,0) {};
@@ -749,8 +747,8 @@ invariant curve of $\tilde\scrF$ that meets the exceptional divisor $E$ at a
 point $q$, which may or may not be a singularity of $\tilde\scrF$.
 
 \begin{proposition}\label{prop:blowup holonomy}
-    The derivative of the holonomy of $\tilde\scrF$ along $\tilde C$ through $q$
-    is the same as that of $\scrF$ along $C$ through $p$.
+    The holonomy of $\tilde\scrF$ along $\tilde C$ through $q$ is the same as
+    that of $\scrF$ along $C$ through $p$.
 \end{proposition}
 
 \begin{proof}
