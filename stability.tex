@@ -103,7 +103,7 @@ particular case it is sufficient, due to the following result:
 % TODO: explicit example with foliation?
 
 \begin{proposition}\label{prop:stable ample}
-    If $\calE$ is a slope semi-stable vector bundle, and $\det\calE$ is ample,
+    If $\calE$ is a slope semistable vector bundle, and $\det\calE$ is ample,
     then $\calE$ is ample.
 \end{proposition}
 
@@ -123,8 +123,8 @@ next section.
 
 \subsection{Slope stability}
 
-The notion of stability is motivated by the application of Mumford's geometric
-invariant theory in the construction of moduli spaces of sheaves.
+The notion of slope stability is motivated by the application of Mumford's
+geometric invariant theory in the construction of moduli spaces of sheaves.
 
 \begin{definition}
     Suppose $X$ is a complex projective variety, with ample line bundle $\O(1)$.
@@ -142,39 +142,74 @@ invariant theory in the construction of moduli spaces of sheaves.
 \end{definition}
 
 We will only be considering slope stability, and so we drop the slope prefix and
-write simply ``$\calE$ is (semi/poly)stable''. A key theorem in the theory of
-slope stability is the following theorem, formerly the Calabi conjecture.
+write simply ``$\calE$ is (semi/poly)stable''. 
 
-\begin{theorem}[Donaldson--Uhlenbeck--Yau] % TODO: reference
-    If $X$ is a smooth complex projective manifold, then a holomorphic vector
-    bundle $\calE$ on $X$ is slope polystable iff it admits a Hermite--Einstein
-    metric.
-    % irreducible vector bundles => can drop poly
-\end{theorem}
+\begin{remark}
+    Line bundles are trivially stable, having no proper subsheaves.
+\end{remark}
 
-To apply this in the situation above, we will appeal to two major theorems:
+\subsubsection{Relation to ample vector bundles}
 
-% TODO: introduce kahler einstein metrics
+To apply \cref{prop:ample} in the situation of $\Omega^1_X$ above, we appeal to
+two major theorems:
 
-\begin{theorem}[Aubin, Yau]
+\begin{theorem}[Aubin \cite{aubin_82}, Yau \cite{yau_78}]
     For a general type smooth complex projective variety, the tangent bundle
     admits a K\"ahler--Einstein metric.
 \end{theorem}
 
-\begin{theorem}[Kobayashi, L\"ubke]
+\begin{theorem}[Kobayashi, L\"ubke \cite{lubke_83}]
     If the tangent bundle of a smooth complex projective variety admits a
-    K\"ahler--Einstein metric, then it is slope stable.
+    K\"ahler--Einstein metric, then it is stable.
 \end{theorem}
 
-% TODO: reference
-Note that stability of a vector bundle is equivalence to stability of its dual),
-so these results imply stability of $\Omega^1_X$, allowing us to apply
-\cref{prop:stable ample}.
+The stability of a vector bundle is equivalent to stability of its dual
+(\cref{prop:stable dual}), so these results imply stability of $\Omega^1_X$,
+allowing us to apply \cref{prop:stable ample}.
 
-We now turn to look at some basic properties of slope stability.
+% TODO: prove prop:stable ample
+
+\subsubsection{The Donaldson--Uhlenbeck--Yau Theorem}
+
+A key theorem in the theory of slope stability is the following theorem,
+formerly known as the Calabi conjecture.
+
+\begin{theorem}[Donaldson--Uhlenbeck--Yau]
+    If $X$ is a smooth complex projective manifold, then a holomorphic vector
+    bundle $\calE$ on $X$ is polystable iff it admits a Hermite--Einstein
+    metric.
+    % irreducible vector bundles => can drop poly
+\end{theorem}
+
+\begin{definition}
+    On a compact K\"ahler manifold $(X,\omega)$ with a holomorphic vector bundle
+    $\calE$, a Hermitian metric $h$ on $\calE$ is \emph{Hermite--Einstein} if
+    its Chern connection $A$ has curvature $F_A$ satisfying
+    \begin{equation*}
+        F_A\wedge\omega^{\dim X-1}
+            = \lambda\cdot(\id_\calE\otimes\omega^{\dim X})
+    \end{equation*}
+    for some $\lambda\in\C$.
+\end{definition}
+
+In fact the constant $\lambda$ is geometrically constrained:
+\begin{align*}
+    \deg\calE
+        &= \int_Xc_1(\calE)\wedge\omega^{\dim X-1} \\
+        &= \frac{i}{2\pi}\int_X\tr(F_A)\wedge\omega^{\dim X-1} \\
+        &= \frac{i}{2\pi}\lambda\rank\cal E\vol(X),
+\end{align*}
+so $\lambda=-2\pi i\mu(\calE)/\vol(X)$, which indicates how slope stability
+might be related.
+
+We now turn to look at some basic properties of stability.
 
 \begin{proposition}
-    If $0\to\calE'\to\calE\to\calE''\to0$ is a short exact sequence of vector
+    If
+    \begin{equation*}
+        0\to\calE'\to\calE\to\calE''\to0
+    \end{equation*}
+    is a short exact sequence of vector
     bundles, then
     \begin{equation*}
         \min\{\mu(\calE'),\mu(\calE'')\}
@@ -182,13 +217,43 @@ We now turn to look at some basic properties of slope stability.
     \end{equation*}
 \end{proposition}
 
-\begin{lemma}
-    For a vector bundle $V$, we have $V^\vee=V\otimes(\det V)^\vee$.
-\end{lemma}
+\begin{proof}
+    Recall that degree and rank are additive in exact sequences. Hence
+    \begin{align*}
+        \mu(\calE)
+            &= \frac{\deg\calE'+\deg\calE''}{\rank\calE'+\rank\calE''} \\
+            &= \frac{\rank\calE'}{\rank\calE'+\rank\calE''}\cdot\mu(\calE')
+            + \frac{\rank\calE''}{\rank\calE'+\rank\calE''}\cdot\mu(\calE''),
+    \end{align*}
+    which is a positive weighted average of total weight 1.
+\end{proof}
 
-\begin{proposition}
-    A vector bundle $\calE$ is (semi)stable iff $\calE^\vee$ is (semi)stable.
+\begin{proposition}\label{prop:line}
+    A vector bundle $\calE$ is stable iff $\calE\otimes\calL$ is stable for any
+    line bundle $\calL$.
 \end{proposition}
+
+\begin{proof}
+    Any subsheaf of $\calE\otimes\calL$ is of the form $\calF\otimes\calL$ for
+    a subsheaf $\calF$ of $\calE$ since $-\otimes\calL$ is an exact equivalence,
+    so this follows from the formula
+    \begin{equation*}
+        \mu(\calF\otimes\calL) = \mu(\calF) + \deg(\calL).
+    \end{equation*}
+\end{proof}
+
+\begin{proposition}\label{prop:stable dual}
+    A vector bundle $\calE$ is stable iff $\calE^\vee$ is stable.
+\end{proposition}
+
+\begin{proof}
+    Since $\calE=\calE^{\vee\vee}$, it suffices to prove the forward
+    implication. Now $\calE^\vee=\calE\otimes(\det\calE)^\vee$, since a volume
+    form defines a perfect pairing $\calE\otimes\calE\to\C$, so the result
+    follows from $\cref{prop:line}$.
+\end{proof}
+
+% TODO: find easy proof
 
 \begin{proposition}
     If $\calE,\calE'$ are semistable vector bundles, then so is
