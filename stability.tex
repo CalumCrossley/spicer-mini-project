@@ -1,24 +1,34 @@
 
 % TODO: in this section we blah
 
-\subsection{The Green--Griffiths conjecture}
+\subsection{The Green--Griffiths conjecture}\label{sec:greengriffiths}
 
-% TODO: intro / context
+The Green--Griffiths conjecture concerns the transcendental geometry of general
+type varieties.
 
 \begin{conjecture}[Green--Griffiths, \cite{griffiths_80}]
-    Let $X$ be a smooth complex variety of general type. Then $X$ admits no
-    Zariski dense holomorphic curves.
+    Let $X$ be a smooth complex projective variety of general type. Then $X$
+    admits no Zariski dense entire holomorphic curves.
 \end{conjecture}
 
-We are considering a holomorphic map $f:\C\to X$, which induces also a map
-$df:\C\to\P(T_X)$. Writing $\O(-1)$ for the relative tautological bundle on
-$\P(T_X)$, we have (tautologically) $(df)^*\O(-1)=T_C$. Now suppose $\O(1)$ is
-big. This assumption is intended as an approximation of the condition of being
-general type. We may find an effective divisor $D\ge0$ in $\P(T_X)$ representing
-$\O(1)$, which is locally a section of the bundle over $X$, although possibly
-not globally. Up to finite degree issues, this gives a rational section of
-$\P(T_X)$, which as mentioned earlier is precisely the data of a foliation, say
-$\scrF$, on $X$.
+There is a more general form of the conjecture, as follows:
+
+\begin{conjecture}[Green--Griffiths--Lang, \cite{lang_86}]
+    Let $X$ be a smooth complex projective variety of general type. There is a
+    proper algebraic subvariety $Y\subset X$ such that every entire holomorphic
+    curve $f:\C\to X$ factors through $Y$.
+\end{conjecture}
+
+Part of the motivating work involving foliations in algebraic geometry is an
+approach to the conjecture due to Bogomolov and McQuillan. We are considering a
+holomorphic map $f:\C\to X$, which induces also a map $df:\C\to\P(T_X)$. Writing
+$\O(-1)$ for the relative tautological bundle on $\P(T_X)$, we have
+(tautologically) $(df)^*\O(-1)=T_C$. Now suppose $\O(1)$ is big. This assumption
+is intended as an approximation of the condition of being general type. We may
+find an effective divisor $D\ge0$ in $\P(T_X)$ representing $\O(1)$, which is
+locally a section of the bundle over $X$, although possibly not globally. Up to
+finite degree issues, this gives a rational section of $\P(T_X)$, which as
+mentioned earlier is precisely the data of a foliation on $X$, call it $\scrF$.
 
 Now from $(df)^*\O(-1)=T_C$ we get $(df)^*\O(1)=K_C=2g(C)-2$, so if $C$ is
 rational $C\cdot D<0$. But this forces $C$ to be a component of $D$, and so in
@@ -29,35 +39,56 @@ of such a foliation is a strong constraint, and this argument is part of work
 due to Bogomolov and McQuillan \cite{mcquillan_98} which lead to certain
 restricted results related to the conjecture.
 
-It turns out that the condition of $\O_{\P(T_X)}(1)$ being big as a property of
-the vector bundle $T_X$ is equivalent to a notion of ampleness for $T_X$, as
-defined in \cite{hartshorne_66}. % TODO: details / sketch
+\subsection{Ample vector bundles}
 
-\subsection{Ampleness and slope stability}
+We would like to better understand this condition of $\O_{\P(T_X)}(1)$ being
+big in terms of $X$ and $T_X$ directly. It turns out to be equivalent to a
+notion of ``ample'' for the vector bundle $T_X$.
 
-Motivated by the previous arguments, suppose we want an example of a surface $X$
-such that $\O_{\P(T_X)}(1)$ is big, or equivalently $T_X$ is ample. For a
-somewhat flexible class of general type surfaces, we will look among high degree
-hypersurfaces in $\P^3$. Consider $X$ cut out by a section of $\O_{\P^3}(d)$. We
-have the normal bundle exact sequence
-\begin{equation*}
-    0 \to N_{X/\P^3}^\vee \to \Omega^1_{\P^3}|_X \to \Omega^1_X \to 0,
-\end{equation*}
-where $N_{X/\P^3}=\O(-d)$ by adjunction. Taking determinants, we see that
-$\O(-4)=K_{\P^3}=K_X\otimes\O(-d)$, so at least $\det\Omega^1_X=K_X$ is ample
-for $d\gg0$. It is not true that a vector bundle is ample whenever its
-determinant bundle is ample (although the converse does hold), % TODO: example, proof
-but in this particular case it is actually sufficient due to the following
-result.
-
-\begin{proposition}\label{prop:stable ample}
-    If $\calE$ is a vector bundle such that $\det\calE$ is ample, and $\calE$ is
-    slope semi-stable, then $\calE$ is ample.
+\begin{proposition}
+    Let $\calE$ be a vector bundle on a variety $X$. Then $\calE$ is an ample
+    vector bundle on $X$ iff the tautological line bundle $\O_{\P(\calE)}(1)$ on
+    $\P(\calE)$ is ample.
 \end{proposition}
 
-% TODO: proof
+We recall from \cite{hartshorne_66} the notion of an ample vector bundle.
 
-In order to apply this, we appeal to two major theorems:
+% TODO: definitions, justification
+
+Motivated by the construction in \cref{sec:greengriffiths}, suppose we want to
+construct a general type surface $X$ such that $\O_{\P(T_X)}(1)$ is big. As we
+have seen, this is equivalent to requiring that $T_X$ is ample. We will consider
+a degree $d$ hypersurface in $\P^3$. We have the normal bundle exact sequence
+\begin{equation*}
+    0 \to N_{X/\P^3}^* \to \Omega^1_{\P^3}|_X \to \Omega^1_X \to 0,
+\end{equation*}
+and $N_{X/\P^3}=\O(-d)$ by adjunction. Taking determinants we see that
+$\O(-4)=K_{\P^3}=K_X\otimes\O(-d)$, so at least $\det\Omega^1_X=K_X$ is ample
+for $d\gg0$. It is not true that a vector bundle with ample determinant bundle
+is always itself ample (although the converse does hold), However, in this
+particular case it is sufficient, due to the following result:
+
+% TODO: counterexample, converse proof
+
+\begin{proposition}\label{prop:stable ample}
+    If $\calE$ is a semi-stable vector bundle, and $\det\calE$ is ample, then
+    $\calE$ is ample.
+\end{proposition}
+
+% TODO: explicit example with foliation?
+
+\subsection{Slope stability}
+
+The notion of stability is motivated by the application of Mumford's geometric
+invariant theory in the construction of moduli spaces of sheaves.
+
+% TODO: definitions
+
+% we will only consider slope stability, drop slope
+
+To apply this in the situation above, we will appeal to two major theorems:
+
+% TODO: introduce kahler einstein metrics
 
 \begin{theorem}[Aubin, Yau]
     For a general type smooth complex projective variety, the tangent bundle
@@ -69,30 +100,31 @@ In order to apply this, we appeal to two major theorems:
     K\"ahler--Einstein metric, then it is slope stable.
 \end{theorem}
 
-Note that stability of a vector bundle is equivalence to stability of its dual,
-so these results imply stability of $\Omega^1_X$ allowing us to apply
+% TODO: reference
+Note that stability of a vector bundle is equivalence to stability of its dual),
+so these results imply stability of $\Omega^1_X$, allowing us to apply
 \cref{prop:stable ample}.
 
-% TODO: easier reason for Omega^1_X stability?
+A key theorem in the theory of slope stability is the following result, formerly
+the Calabi conjecture.
 
-% TODO: construct example, find the foliation?
-
-% TODO: ample definitions
-
-% TODO: slope stability definitions
-
-% only consider slope stability, drop slope
-
-This definition is motivated by the application of Mumford's geometric invariant
-theory in the construction of moduli spaces of sheaves. A key theorem in the
-stability theory of sheaves is the following:
-
-\begin{theorem}[Donaldson--Uhlenbeck--Yau]
+\begin{theorem}[Donaldson--Uhlenbeck--Yau] % TODO: reference
     If $X$ is a smooth complex projective manifold, then a holomorphic vector
     bundle $\calE$ on $X$ is slope polystable iff it admits a Hermite--Einstein
     metric.
     % irreducible vector bundles => can drop poly
 \end{theorem}
+
+We now turn to look at some basic properties of slope stability.
+
+\begin{proposition}
+    If $0\to\calE'\to\calE\to\calE''\to0$ is a short exact sequence of vector
+    bundles, then
+    \begin{equation*}
+        \min\{\mu(\calE'),\mu(\calE'')\}
+            \le \mu(\calE) \le \max\{\mu(\calE'),\mu(\calE'')\}.
+    \end{equation*}
+\end{proposition}
 
 \begin{lemma}
     For a vector bundle $V$, we have $V^*=V\otimes(\det V)^*$.
@@ -111,5 +143,3 @@ stability theory of sheaves is the following:
     If $\calE,\calE'$ are semistable vector bundles, then so is
     $\calE\oplus\calE'$.
 \end{proposition}
-
-% TODO: prove one directly, the other is done via Hermite--Einstein metrics
